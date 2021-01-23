@@ -1,3 +1,5 @@
+require('dotenv').config();
+
 module.exports = {
   siteMetadata: {
     title: "Demo_Corporate",
@@ -6,8 +8,10 @@ module.exports = {
     {
       resolve: "gatsby-source-sanity",
       options: {
-        projectId: "Corporate_Demo",
-        dataset: "corporate",
+        projectId: "9xy1rkv8",
+        dataset: "production",
+        watchMode: true,
+        token: process.env.SANITY_TOKEN,
       },
     },
     "gatsby-plugin-styled-components",
