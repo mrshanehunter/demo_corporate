@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import Layout from "../components/Layout";
 import styled from "styled-components";
 import Product from "../components/Product";
+import ShoppingCart from "../components/ShoppingCart";
 
 const ContainingDiv = styled.div`
   width: 75%;
@@ -16,7 +17,8 @@ export default function shopPage({ data }) {
   return (
     <Layout>
       <ContainingDiv>
-         <Product products={products}/>
+          <ShoppingCart style={{fontSize: `3rem`, width: `100%`}} />
+          <Product products={products}/>
       </ContainingDiv>
     </Layout>
   );
@@ -26,6 +28,7 @@ export const query = graphql`
   query productsQuery {
     products: allSanityProducts {
       nodes {
+        id
         name
         pdcode
         price

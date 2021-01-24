@@ -29,6 +29,11 @@ const GlobalStyles = createGlobalStyle`
     font-size: 1.5rem;
   }
 
+  hr {
+    border: 0.05rem solid ${({ theme }) => theme.silver};
+
+  }
+
  img {
     padding: 0;
     margin: 0;

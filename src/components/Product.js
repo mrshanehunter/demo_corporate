@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import Img from "gatsby-image";
 import Slide from "react-reveal";
 import styled from "styled-components";
+import useCart from "../utils/useCart";
 
 const ProductsGrid = styled.div`
   display: grid;
@@ -24,6 +25,18 @@ function ProductItem({ product }) {
   const handleClick = (e) => {
     setShow(!show)
   }
+  const {
+    cart,
+    addToCart,
+    removeFromCart,
+    error,
+    loading,
+    message,
+  } = useCart({
+    product
+   
+  });
+
 
   return (
     <ProductItemsGrid>
@@ -43,7 +56,7 @@ function ProductItem({ product }) {
           </div>
           
           <div className="btnDiv">
-            <button className="atcBtn" type="button"><strong>Add To Cart</strong></button>
+            <button className="atcBtn" type="submit" onClick={() => addToCart(product)}><strong>Add To Cart</strong></button>
           </div>
           </div>
           </Slide>
@@ -57,7 +70,7 @@ export default function Product({ products }) {
   return (
     <ProductsGrid>
       {products.map((product) => (
-        <ProductItem key={product.svccode} product={product} />
+        <ProductItem key={product.id} product={product} />
       ))}
     </ProductsGrid>
   );
