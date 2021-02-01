@@ -1,26 +1,37 @@
 import React from "react";
 import { graphql } from "gatsby";
-import Layout from "../components/Layout";
 import styled from "styled-components";
 import Product from "../components/Product";
-import ShoppingCart from "../components/ShoppingCart";
+import ShoppingCartSummary from "../components/ShoppingCartSummary";
 
 const ContainingDiv = styled.div`
   width: 75%;
   height: 90%;
   margin: 5% auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  @media (max-width: 375px) {
+    width: 100%;
+    flex-direction: column;
+    margin: auto;
+    align-items: center;
+  }
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: center;
+  }
 `;
+
 
 export default function shopPage({ data }) {
   const products = data.products.nodes;
   
   return (
-    <Layout>
-      <ContainingDiv>
-          <ShoppingCart style={{fontSize: `3rem`, width: `100%`}} />
+    <ContainingDiv>
+          <ShoppingCartSummary style={{fontSize: `3rem`, width: `100%`}} />
           <Product products={products}/>
       </ContainingDiv>
-    </Layout>
   );
 }
 

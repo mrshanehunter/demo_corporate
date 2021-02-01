@@ -2,12 +2,15 @@ import React from 'react';
 import { bool } from 'prop-types';
 import { StyledMenu } from './Menu.styled';
 import Logo from '../Logo';
+import Pulse from "react-reveal/Pulse"
 
 const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
-      <a href="/home" aria-label="home">
-        <Logo />
+      <a className="logo" href="/home" aria-label="home">
+        <Pulse forever="true">
+           <Logo />
+        </Pulse>
       </a>
       <a href="/about" aria-label="about us">
         About us

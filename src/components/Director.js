@@ -34,14 +34,23 @@ const DirectorCard = styled.div`
     p {
       margin-top: 0;
     }
-`;
+  @media (min-width: 768px) {
+    width: 22rem;
+    height: 77rem;
+  }  
+ `;
 
 const BioGrid = styled.div` 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; //repeat(3, minmax(300px, 1fr));
+  grid-template-columns: 1fr 1fr 1fr; 
   gap: 1rem;
   grid-template-rows: auto; 
   padding: 1rem;
+  @media (max-width: 375px) {
+    margin-top: 5rem;
+    grid-template-columns: 1fr;
+  }
+ 
 `;
 
 

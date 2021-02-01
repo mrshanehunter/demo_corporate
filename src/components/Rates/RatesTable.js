@@ -24,6 +24,9 @@ const StyledExchange = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  @media (max-width: 375px) {
+    margin-left: 7rem;
+  }
 `;
   
 const RatesTable = (props) => {

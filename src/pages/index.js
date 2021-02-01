@@ -6,7 +6,7 @@ import Logo from '../components/Logo';
 
 const LandingStyle = styled.div`
   background-color: #1978a5;
-  height: 100vw;
+  height: 100vh;
   width: 100vw;
   padding: 0;
   margin: 0;
@@ -14,9 +14,9 @@ const LandingStyle = styled.div`
   justify-content: center;
   .logo {
     position: relative;
-    height: 150px;
-    width: 150px;
-    margin-top: 15rem;
+    height: 250px;
+    width: 250px;
+    margin-top: 25rem;
   }
 `;
    

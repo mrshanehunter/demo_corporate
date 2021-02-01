@@ -119,7 +119,9 @@ const GlobalStyles = createGlobalStyle`
     border-color: ${({ theme }) => theme.primaryHover};
     color: ${({ theme }) => theme.silver};
     font-size: 1.6rem;
+    border-radius: 5px;
   }
+  
 .ratestable {
   width: 20rem;
   height: 20rem;
@@ -127,7 +129,53 @@ const GlobalStyles = createGlobalStyle`
   font-size: 3rem;
   color: green;
 }
-
+.cartProduct {
+  color: ${({ theme }) => theme.primaryHover};
+  font-size: 1.8rem;
+  text-align: center;
+}
+.cartTtl {
+  font-size: 2rem;
+  text-align: center;
+  color: ${({ theme }) => theme.silver};
+}
+.cartGST {
+  font-size: 1.4rem;
+  font-style: italic;
+  text-align: center;
+  color: ${({ theme }) => theme.silver};
+}
+.checkOut {
+  margin-top: 3rem;
+  width: 60%;
+  margin-left: 20%;
+  background-color: ${({ theme }) => theme.primaryHover};
+  font-size: 1.8rem;
+  padding: 1rem;
+  border-color: ${({ theme }) => theme.silver};
+  text-transform: uppercase;
+  box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
+  color: ${({ theme }) => theme.dblue};
+  letter-spacing: 4px;
+  border-radius: 5px;
+  text-align: center;
+  cursor: pointer;
+}
+.remove {
+  background: transparent;
+  border: 0.05rem solid ${({ theme }) => theme.lblue};
+  border-radius: 5px;
+  color: ${({ theme }) => theme.silver};
+  text-align: center;
+  text-transform: uppercase;
+  box-shadow: 0.05rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
+  letter-spacing: 2px;
+  padding: 0.5rem 0;
+  cursor: pointer;
+  width: 50%;
+  margin-left: 25%;
+}
+}
 `;
 
 export default GlobalStyles;

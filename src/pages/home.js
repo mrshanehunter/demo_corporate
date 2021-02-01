@@ -9,6 +9,11 @@ const ContainingDiv = styled.div`
   display: flex;
   justify-content: flex-end;
   margin: 0 auto;
+  @media (max-width: 375px) {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  
 `;
 
 

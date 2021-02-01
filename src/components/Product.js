@@ -1,8 +1,8 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import Img from "gatsby-image";
 import Slide from "react-reveal";
 import styled from "styled-components";
-import useCart from "../utils/useCart";
+import CartContext from "../contexts/CartContext";
 
 const ProductsGrid = styled.div`
   display: grid;
@@ -10,6 +10,13 @@ const ProductsGrid = styled.div`
   gap: 2vw;
   grid-auto-rows: auto;
   padding: 2vw;
+  margin-top: 4rem;
+  @media (max-width: 375px) {
+    margin-top: 6rem;
+  }
+  @media (max-width: 768px) {
+    margin-top: 10rem;
+  }
 `;
 
 const ProductItemsGrid = styled.div`
@@ -18,6 +25,7 @@ const ProductItemsGrid = styled.div`
   display: grid;
   grid-template-rows: 35rem 35rem;
   grid-auto-columns: auto;
+ 
 `;
 
 function ProductItem({ product }) {
@@ -25,17 +33,14 @@ function ProductItem({ product }) {
   const handleClick = (e) => {
     setShow(!show)
   }
-  const {
-    cart,
-    addToCart,
-    removeFromCart,
-    error,
-    loading,
-    message,
-  } = useCart({
-    product
-   
-  });
+
+  const cntxt = useContext(CartContext)
+ 
+
+  const addToCart = (product) => {
+    cntxt.setCart([...cntxt.cart, product])
+  }
+  
 
 
   return (

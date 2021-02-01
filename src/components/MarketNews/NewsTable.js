@@ -12,6 +12,9 @@ const StyledNews = styled.div`
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
   padding: 1rem;
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
  
 `;
 

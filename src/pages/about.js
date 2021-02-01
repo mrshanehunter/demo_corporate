@@ -6,7 +6,17 @@ import Director from "../components/Director"
 const ContainingDiv = styled.div`
 width: 60%;
 height: 80%;
-margin: 5% auto;
+margin: 0 auto;
+@media (max-width: 375px) {
+  width: 85%;
+  margin: 0 auto;
+}
+@media (max-width: 768px) {
+  width: 100%;
+  margin-top: 15rem;
+  display: flex;
+  justify-content: center;
+}
 `;
 
 

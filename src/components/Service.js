@@ -11,6 +11,18 @@ const ServicesGrid = styled.div`
   gap: 2vw;
   grid-auto-rows: auto;
   padding: 2vw;
+  @media (max-width: 375px) {
+    grid-template-columns: 1fr;
+    margin-top: 10rem;
+    justify-content: center;
+    gap: 8vw;
+  }
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10rem;
+    justify-content: center;
+    gap: 5vw;
+  }
 `;
 
 

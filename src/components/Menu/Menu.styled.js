@@ -18,6 +18,9 @@ export const StyledMenu = styled.nav`
   
   @media (max-width: ${({ theme }) => theme.mobile}) {
     width: 100%;
+    .logo {
+      align-self: center;
+    }
   }
 
   a {
