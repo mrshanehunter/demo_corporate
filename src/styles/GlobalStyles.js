@@ -25,9 +25,25 @@ const GlobalStyles = createGlobalStyle`
     text-rendering: optimizeLegibility;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    font-family: "futura-pt";
+    font-style: normal;
+    font-weight: 600;
+  }
+
   p {
     font-size: 1.5rem;
+    font-family: "baskerville-display-pt";
+    font-style: normal;
+    font-weight: 400;
   }
+
+  a {
+    font-family: "baskerville-display-pt";
+    font-style: normal;
+    font-weight: 400;
+  }
+
 
   hr {
     border: 0.05rem solid ${({ theme }) => theme.silver};
@@ -174,7 +190,6 @@ const GlobalStyles = createGlobalStyle`
   cursor: pointer;
   width: 50%;
   margin-left: 25%;
-}
 }
 `;
 

@@ -7,21 +7,21 @@ import { ServiceStyleFront, ServiceStyleBack } from '../styles/GridStyles';
 
 const ServicesGrid = styled.div` 
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2vw;
-  grid-auto-rows: auto;
-  padding: 2vw;
-  @media (max-width: 375px) {
-    grid-template-columns: 1fr;
+  grid-template-columns: 1fr;
     margin-top: 10rem;
     justify-content: center;
     gap: 8vw;
-  }
-  @media (max-width: 768px) {
+  @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
     margin-top: 10rem;
     justify-content: center;
     gap: 5vw;
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 2vw;
+    grid-auto-rows: auto;
+    padding: 2vw;
   }
 `;
 

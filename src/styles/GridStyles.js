@@ -22,4 +22,7 @@ export const ServiceStyleBack = styled.div`
   color: ${({ theme }) => theme.dblue};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.5);
   justify-content: center;
+  h2 {
+    text-transform: uppercase;
+  }
 `;

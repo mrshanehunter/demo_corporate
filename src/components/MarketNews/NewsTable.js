@@ -3,7 +3,7 @@ import styled from "styled-components";
 
 const StyledNews = styled.div`
   display: grid;
-  grid-template-columns: 1fr 1fr;
+  grid-template-columns: 1fr;
   grid-auto-rows: auto;
   gap: 1.5rem;
   margin: 4rem 1rem;
@@ -12,13 +12,12 @@ const StyledNews = styled.div`
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
   padding: 1rem;
-  @media (max-width: 768px) {
-    grid-template-columns: 1fr;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
   }
- 
 `;
 
-const StyledNewsItem = styled.div` 
+const StyledNewsItem = styled.div`
   width: 25rem;
   margin: 0 auto;
   background: ${({ theme }) => theme.dblue};
@@ -49,29 +48,26 @@ const StyledNewsItem = styled.div`
       color: ${({ theme }) => theme.silver};
     }
   }
-
 `;
 
 function NewsItem({ item }) {
   return (
     <StyledNewsItem>
       <h2>{item.headline}</h2>
-      <h5>SOURCE:{" "}{item.source}</h5>
+      <h5>SOURCE: {item.source}</h5>
       <h5>{Date(item.datetime).toString()}</h5>
-      <hr style={{margin: `0.5rem 1rem`}} />
+      <hr style={{ margin: `0.5rem 1rem` }} />
       <div>
-        <img src={item.image} alt={item.headline} width="220"/>
+        <img src={item.image} alt={item.headline} width="220" />
         <p>{item.summary}</p>
       </div>
-      
-      
     </StyledNewsItem>
-  )
+  );
 }
 
 const NewsTable = (props) => {
   const { news } = props;
-  
+
   if (!news || news.length === 0) return <p>No News available today</p>;
   return (
     <StyledNews>

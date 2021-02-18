@@ -26,7 +26,7 @@ export default function indexPage(){
     <>
     <LandingStyle>
       <Link to="/home">
-        <Pulse forever="true">
+        <Pulse forever={true}>
        <Logo className="css animated" />
        </Pulse>
        </Link>

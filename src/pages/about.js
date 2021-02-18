@@ -5,15 +5,14 @@ import Director from "../components/Director"
 
 const ContainingDiv = styled.div`
 width: 60%;
-height: 80%;
-margin: 0 auto;
-@media (max-width: 375px) {
-  width: 85%;
-  margin: 0 auto;
+margin: 10rem auto;
+@media (min-width: 768px) {
+  width: 90%;
+  margin: 12.5rem auto;
 }
-@media (max-width: 768px) {
+@media (min-width: 1024px) {
   width: 100%;
-  margin-top: 15rem;
+  margin-top: 5rem;
   display: flex;
   justify-content: center;
 }

@@ -8,7 +8,7 @@ const Menu = ({ open }) => {
   return (
     <StyledMenu open={open}>
       <a className="logo" href="/home" aria-label="home">
-        <Pulse forever="true">
+        <Pulse forever={true}>
            <Logo />
         </Pulse>
       </a>

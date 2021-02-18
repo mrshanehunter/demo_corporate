@@ -10,12 +10,15 @@ const ProductsGrid = styled.div`
   gap: 2vw;
   grid-auto-rows: auto;
   padding: 2vw;
-  margin-top: 4rem;
-  @media (max-width: 375px) {
-    margin-top: 6rem;
-  }
-  @media (max-width: 768px) {
+  margin-top: 6rem;
+  @media (min-width: 768px) {
     margin-top: 10rem;
+    gap: 4vw;
+    padding: 4vw;
+  }
+  @media (min-width: 1024px) {
+    margin-top: 4rem;
+    gap: 6vw;
   }
 `;
 
@@ -25,32 +28,37 @@ const ProductItemsGrid = styled.div`
   display: grid;
   grid-template-rows: 35rem 35rem;
   grid-auto-columns: auto;
- 
+  h2 {
+    text-transform: uppercase;
+  }
 `;
 
 function ProductItem({ product }) {
   const [show, setShow] = useState(false);
   const handleClick = (e) => {
-    setShow(!show)
-  }
+    setShow(!show);
+  };
 
-  const cntxt = useContext(CartContext)
- 
+  const cntxt = useContext(CartContext);
 
   const addToCart = (product) => {
-    cntxt.setCart([...cntxt.cart, product])
-  }
-  
-
+    cntxt.setCart([...cntxt.cart, product]);
+  };
 
   return (
     <ProductItemsGrid>
-      <button className="slideBtn" type="button" onClick={e => {handleClick(e)}}>
-     <Img fluid={product.image.asset.fluid} alt={product.name} />
-     </button>
-     <Slide top when={show}>
-   <div className="product">
-          <h2 >
+      <button
+        className="slideBtn"
+        type="button"
+        onClick={(e) => {
+          handleClick(e);
+        }}
+      >
+        <Img fluid={product.image.asset.fluid} alt={product.name} />
+      </button>
+      <Slide top when={show}>
+        <div className="product">
+          <h2>
             <span>{product.name}</span>
           </h2>
           <h3>${product.price}</h3>
@@ -59,15 +67,19 @@ function ProductItem({ product }) {
             <p>{product.description1}</p>
             <p>{product.description2}</p>
           </div>
-          
+
           <div className="btnDiv">
-            <button className="atcBtn" type="submit" onClick={() => addToCart(product)}><strong>Add To Cart</strong></button>
+            <button
+              className="atcBtn"
+              type="submit"
+              onClick={() => addToCart(product)}
+            >
+              <strong>Add To Cart</strong>
+            </button>
           </div>
-          </div>
-          </Slide>
-      </ProductItemsGrid>
-    
-   
+        </div>
+      </Slide>
+    </ProductItemsGrid>
   );
 }
 

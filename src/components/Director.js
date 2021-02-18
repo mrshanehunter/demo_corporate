@@ -5,8 +5,8 @@ import styled from "styled-components";
 
 
 const DirectorCard = styled.div`
-  width: 30rem;
-  height: 65rem;
+  width: 25rem;
+  height: 70rem;
   display: flex;
   flex-direction: column;
   border: 0.15rem solid ${({ theme }) => theme.silver};
@@ -42,13 +42,14 @@ const DirectorCard = styled.div`
 
 const BioGrid = styled.div` 
   display: grid;
-  grid-template-columns: 1fr 1fr 1fr; 
+  grid-template-columns: 1fr; 
   gap: 1rem;
   grid-template-rows: auto; 
   padding: 1rem;
-  @media (max-width: 375px) {
-    margin-top: 5rem;
-    grid-template-columns: 1fr;
+  margin-top: 5rem;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 4vw;
   }
  
 `;

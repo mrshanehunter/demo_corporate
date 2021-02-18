@@ -1,54 +1,62 @@
 import React from "react";
 import { graphql } from "gatsby";
 import Contact from "../components/Contact";
+import ContactIntro from "../components/ContactIntro";
+import ContactForm from "../components/ContactForm";
 import styled from "styled-components";
 
 const ContainingDiv = styled.div`
-width: 50%;
-height: 80%;
-margin: 20% auto;
+  width: 80%;
+  margin: 12.5rem auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 3vw;
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (min-width: 1024px) {
+    width: 95%;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 `;
 
-
-export default function contactPage({ data }) {
-const contacts = data.contacts.nodes;
-console.log(contacts);
+export default function contactPage( props ) {
+  const contacts = props.data.contacts.nodes;
+  const location = props.location;
   return (
-
-   
     <ContainingDiv>
+      <ContactIntro />
+      <ContactForm location={location}/>
       <Contact contacts={contacts} />
     </ContainingDiv>
- 
-
-);
+  );
 }
 
-export const query = graphql` 
-query contactsQuery {
-contacts: allSanityContacts {
-  nodes {
-    id
-    officeloc
-    telephone
-    email
-    office
-    street
-    postal
-    city
-    state
-    postcode
-    image {
-      asset {
-        fixed(width: 300, height: 300) {
-          ...GatsbySanityImageFixed
-        }
-        fluid(maxWidth: 600) {
-          ...GatsbySanityImageFluid
+export const query = graphql`
+  query contactsQuery {
+    contacts: allSanityContacts {
+      nodes {
+        id
+        officeloc
+        telephone
+        email
+        office
+        street
+        postal
+        city
+        state
+        postcode
+        image {
+          asset {
+            fixed(width: 300, height: 300) {
+              ...GatsbySanityImageFixed
+            }
+            fluid(maxWidth: 600) {
+              ...GatsbySanityImageFluid
+            }
+          }
         }
       }
     }
   }
-}
-}
-`;  
+`;
