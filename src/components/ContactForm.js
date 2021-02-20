@@ -70,6 +70,7 @@ export default function ContactForm({ location }) {
       "name": nameRef.current.value,
       "email": emailRef.current.value,
       "phone": phoneRef.current.value,
+      "message": messageRef.current.value,
     }
     const axiosOptions = {
       url: location.href,
