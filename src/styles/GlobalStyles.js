@@ -145,6 +145,7 @@ const GlobalStyles = createGlobalStyle`
     letter-spacing: 2px;
     font-family: "futura-pt";
     text-transform: uppercase;
+    cursor: pointer;
   }
   
 .ratestable {

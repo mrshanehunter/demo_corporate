@@ -46,8 +46,6 @@ export default function PayReject(props) {
       
       <h3>Either you didn't complete the checkout or there was a problem with your payment {fName}</h3>
       
-     <Link to ="/shop">Click Here to Try the Purchase Again</Link>
-     <h3>OR</h3>
       <Link to="/home">Click Here To Continue Browsing</Link>
     </StyledContainer>
   );
