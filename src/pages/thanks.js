@@ -49,7 +49,7 @@ const ThanksPage = () => {
     let done = false;
     
     const splitIt = async () => {
-      await firstName = fullName.split(" ");
+      firstName = await fullName.split(" ");
     }
 
     const timing = async () => {
