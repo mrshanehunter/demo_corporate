@@ -41,7 +41,7 @@ const StyledTile = styled.div`
 `;
 
 const ThanksPage = () => {
-
+  const [loading, setLoading] = useState(false);
   const [fullName, setFullName] = useState(""); 
   let firstName = [];
 
@@ -49,13 +49,18 @@ const ThanksPage = () => {
     let done = false;
 
     const timing = async () => {
-    await setFullName(sessionStorage.getItem("form"));
-    done = true;
+      await setFullName(sessionStorage.getItem("form"));
+      await setLoading(loading);
+      if (loading && fullName !== "") {
+        firstName = fullName.split(" ");
+        done = true;
+      } 
     }
+    
     timing()
 
     if (done) {
-    firstName = fullName.split(" ");
+    setLoading(!loading);
     }
   })
  
