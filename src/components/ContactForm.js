@@ -1,5 +1,7 @@
 import React, { useRef, useState } from "react";
 import axios from "axios";
+import NProgress from "react-nprogress";
+import "nprogress/nprogress.css";
 import * as qs from "query-string";
 import { navigate } from "gatsby";
 import styled from "styled-components";
@@ -38,6 +40,9 @@ const StyledForm = styled.form`
     background: ${({ theme }) => theme.primaryHover};
     font-size: 2rem;
     border-radius: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-family: "futura-pt";
   }
   
   
@@ -57,6 +62,8 @@ export default function ContactForm({ location }) {
   function handleSubmit(e) {
     e.preventDefault()
     setLoading(loading)
+    NProgress.start();
+    sessionStorage.setItem("form", nameRef.current.value);
     const formData = {
       "form-name": "contact",
       "company": companyRef.current.value,
@@ -79,6 +86,7 @@ export default function ContactForm({ location }) {
         setMessage("Form Could Not Be Submitted")
       })
     setLoading(!loading)
+    NProgress.done();
     navigate("/thanks")    
   }
   return (

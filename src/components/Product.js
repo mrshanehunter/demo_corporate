@@ -6,28 +6,28 @@ import CartContext from "../contexts/CartContext";
 
 const ProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  gap: 2vw;
-  grid-auto-rows: auto;
-  padding: 2vw;
-  margin-top: 6rem;
+  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  gap: 8vw;
+  padding: 4vw;
+  margin: 10rem 0;
+  align-items: center;
+  justify-items: center;
   @media (min-width: 768px) {
     margin-top: 10rem;
     gap: 4vw;
     padding: 4vw;
   }
   @media (min-width: 1024px) {
-    margin-top: 4rem;
+    margin-top: 2rem;
     gap: 6vw;
+    padding: 6vw;
   }
 `;
 
 const ProductItemsGrid = styled.div`
   width: 35rem;
-  height: 70rem;
   display: grid;
-  grid-template-rows: 35rem 35rem;
-  grid-auto-columns: auto;
+  grid-template-columns: 1fr;
   h2 {
     text-transform: uppercase;
   }
@@ -35,6 +35,7 @@ const ProductItemsGrid = styled.div`
 
 function ProductItem({ product }) {
   const [show, setShow] = useState(false);
+  
   const handleClick = (e) => {
     setShow(!show);
   };
@@ -43,6 +44,7 @@ function ProductItem({ product }) {
 
   const addToCart = (product) => {
     cntxt.setCart([...cntxt.cart, product]);
+    setShow(!show);
   };
 
   return (
@@ -56,7 +58,7 @@ function ProductItem({ product }) {
       >
         <Img fluid={product.image.asset.fluid} alt={product.name} />
       </button>
-      <Slide top when={show}>
+      <Slide top collapse when={show}>
         <div className="product">
           <h2>
             <span>{product.name}</span>
@@ -82,6 +84,10 @@ function ProductItem({ product }) {
     </ProductItemsGrid>
   );
 }
+
+
+
+
 
 export default function Product({ products }) {
   return (

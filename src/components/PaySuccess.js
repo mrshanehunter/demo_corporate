@@ -1,36 +1,104 @@
-import React, { useContext, useEffect, useState } from "react";
-import CartContext from "../contexts/CartContext";
-import { loadStripe } from "@stripe/stripe-js";
+import React, { useState, useEffect } from "react";
+import { Link, useStaticQuery, graphql } from "gatsby";
+import styled from "styled-components";
 
 
-
-
-export default function PaySuccess() {
-  const cntxt = useContext(CartContext);
-  const sessId = cntxt.sessId;
-  
-  const [resData, setResData] = useState({});
-
-  console.log(sessId);
-  
-  
-  // useEffect(() => {
-   
-  //  fetch("http://localhost:8888/.netlify/functions/orderConfirm", {
-  //    method: "GET",
-  //  })   
-  //   .then(response => response.json())
-  //   .then(data => setResData(data))
- 
-  // })
-  
-  
-  
-  return (
-    <div>
-     <div>PaySuccessComponent</div>
-     {/* <div>{resData.object}</div> */}
-    </div>
-  );
+const StyledContainer = styled.div` 
+  width: 35rem;
+  background: ${({ theme })=> theme.dblue};
+  border: 0.05rem solid ${({ theme }) => theme.silver};
+  box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+  padding: 2rem;
+  border-radius: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  h3 {
+    margin-top: 0;
+    font-size: 2.2rem;
+    color: ${({ theme }) => theme.primaryHover};
+    text-transform: uppercase;
+  }
+  h4 {
+    margin-top: 0;
+    font-size: 2rem;
+    color: ${({ theme }) => theme.lblue};
+    text-transform: uppercase;
+  }
+  a {
+    margin-top: 0;
+    margin-bottom: 1.2rem;
+    font-size: 1.8rem;
+    color: ${({ theme }) => theme.silver};
+    text-decoration: none;
+    cursor: pointer;
   }
 
+`;
+
+export default function PaySuccess(props) {
+  
+  let products = [];
+  const [cName, setCName] = useState("");
+  const [productNames, setProductName] = useState("");
+  const [sesh, setSesh] = useState("");
+    
+  const { refdata } = useStaticQuery(graphql`
+    query {
+      refdata: allSanityProducts {
+        nodes {
+          name
+          pricecode
+        }
+      }
+    }
+  `);
+
+    useEffect(() => {
+      setCName(sessionStorage.getItem("cName"));
+      setProductName(sessionStorage.getItem("Items"));
+      setSesh(sessionStorage.getItem("id"));
+      products = JSON.parse(productNames);
+    })
+
+  const data = refdata.nodes 
+  let resItems = [];
+   
+  function nameFind(data, products) {
+    products.map((item) => {
+      resItems = data.find((dataItem) => dataItem.pricecode === item.price);   
+      return {
+        ...item,
+        itemName: resItems.name,
+        itemPrice: resItems.pricecode,
+      }
+  });
+}
+
+nameFind(data, products);
+
+  if (resItems.length > 1) {
+    return (
+      <StyledContainer>
+        <h3>Thanks for your purchase {cName}</h3>
+     <h4>Your tax invoice is being sent via email.</h4>
+     <h4>Until it arrives, take note of this reference:{sesh}</h4>
+     <h4>We will be in contact with you shortly to make arrangements for your purchases</h4>
+     <Link to="/home">Click Here To Continue Browsing</Link>
+      </StyledContainer>
+    )
+  }
+  else {
+   
+   return (
+    <StyledContainer>
+     <h3>Thanks for your purchase {cName}</h3>
+     <h4>Your tax invoice is being sent via email.</h4>
+     <h4>Until it arrives, take note of this reference:{sesh}</h4>
+     <h4>We will be in contact with you shortly to arrange your:{resItems.name}</h4>
+     <Link to="/home">Click Here To Continue Browsing</Link>
+    </StyledContainer>
+  );
+  }
+}

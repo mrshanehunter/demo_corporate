@@ -1,17 +1,13 @@
 import React from "react";
 import styled from "styled-components";
 import Pulse from "react-reveal/Pulse";
-import WelcomeProfile from "./WelcomeProfile";
-import WelcomeService from "./WelcomeService";
-import WelcomeProduct from "./WelcomeProduct";
 import Logo from "../Logo";
 
 const StyledWelcome = styled.div`
   display: grid;
-  grid-template-columns: 300px;
-  /* width: 50rem; */
-  /* height: 40rem; */
-  margin: 4rem auto;
+  grid-template-columns: 1fr;
+  width: 100%;
+  margin: 4rem 0 0;
   background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
@@ -31,86 +27,76 @@ const StyledWelcome = styled.div`
     align-items: center;
   }
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-columns: 1fr;
+    margin: 4rem auto 0;
   }
   @media (min-width: 1024px) {
     grid-template-columns: 1fr;
+    
   }
 `;
 
 const StyledWelcomeMessage = styled.div`
-  width: 97.5%;
-  margin: 0 auto 2rem;
-  background: ${({ theme }) => theme.silver};
+  width: 100%;
+  margin: 0 auto;
+  background: ${({ theme }) => theme.lblue};
   color: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
 `;
 
-const StyledHeader1 = styled.h1`
+const StyledCopy = styled.div`
   color: ${({ theme }) => theme.dblue};
-  margin-bottom: 0;
-  margin-top: 0;
-`;
-
-const StyledHeader2 = styled.h2`
-  color: ${({ theme }) => theme.dblue};
-  margin-bottom: 0;
-  margin-top: 1rem;
-`;
-
-const StyledHeader3 = styled.h3`
-  color: ${({ theme }) => theme.dblue};
-  margin-bottom: 0;
-  margin-top: 1rem;
+  width: 100%;
+  h2 {
+    margin: 0;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    padding: 1.5rem 0;
+  }
+  p {
+  padding: 0 2.5rem;
   font-size: 1.6rem;
-`;
-
-const StyledList = styled.ol`
-  color: ${({ theme }) => theme.dblue};
-  margin-bottom: 1rem;
-  margin-top: 1rem;
+  }
   li {
-    font-size: 1.5rem;
-    padding-bottom: 0.5rem;
+    font-size: 1.6rem;
+    font-family: "futura-pt";
+    text-transform: uppercase;
+    padding-right: 2rem;
+    padding-bottom: 0.4rem;
   }
 `;
 
-export default function Welcome() {
+function CopyDetails({ copy }) {
   return (
     <StyledWelcome>
       <StyledWelcomeMessage>
         <Pulse forever={true}>
-        <Logo />
+          <Logo />
         </Pulse>
-        <StyledHeader1>This week at </StyledHeader1>
-        <StyledHeader1>Shepherd's Advisory Service:</StyledHeader1>
-        <StyledHeader2>Have you considered ... </StyledHeader2>
-        <StyledList>
-          <li>Imperdiet massa tincidunt nunc pulvinar sapien et ligula</li>
-          <li>
-            Dictum fusce ut placerat orci nulla pellentesque dignissim enim sit
-            amet venenatis
-          </li>
-          <li>
-            Quis enim lobortis scelerisque fermentum dui faucibus in ornare quam
-          </li>
-        </StyledList>
-        <StyledHeader3>
-          Stay abreast of currency fluctuations as they occur with our Forex
-          Chart
-        </StyledHeader3>
-        <StyledHeader3>
-          Read up on the latest world news as it's being made with our Live Feed
-        </StyledHeader3>
-        <StyledHeader3>
-          Or get the best advice by following the features below ...
-        </StyledHeader3>
+        <>
+          <p>{copy.para1}</p>
+          <h2>{copy.heading1}</h2>
+          <p>{copy.para2}</p>
+          <ol>
+            <li>{copy.heading2}</li>
+            <li>{copy.heading3}</li>
+            <li>{copy.heading4}</li>
+          </ol>
+          <p>{copy.para1}</p>
+        </>
       </StyledWelcomeMessage>
-      <WelcomeService />
-      <WelcomeProduct />
-      <WelcomeProfile />
     </StyledWelcome>
+  );
+}
+
+export default function Welcome({ copies }) {
+  return (
+    <StyledCopy>
+      {copies.map((copy) => (
+        <CopyDetails key={copy.id} copy={copy} />
+      ))}
+    </StyledCopy>
   );
 }

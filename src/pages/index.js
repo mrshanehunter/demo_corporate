@@ -14,9 +14,9 @@ const LandingStyle = styled.div`
   justify-content: center;
   .logo {
     position: relative;
-    height: 250px;
-    width: 250px;
-    margin-top: 25rem;
+    height: 25rem;
+    width: 25rem;
+    margin-top: 25%;
   }
 `;
    

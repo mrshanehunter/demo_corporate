@@ -6,8 +6,8 @@ import { ServiceStyleFront, ServiceStyleBack } from '../styles/GridStyles';
 
 
 const ServicesGrid = styled.div` 
-  display: grid;
-  grid-template-columns: 1fr;
+    display: grid;
+    grid-template-columns: 1fr;
     margin-top: 10rem;
     justify-content: center;
     gap: 8vw;
@@ -19,8 +19,9 @@ const ServicesGrid = styled.div`
   }
   @media (min-width: 1024px) {
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 2vw;
     grid-auto-rows: auto;
+    gap: 2vw;
+    justify-content: center;
     padding: 2vw;
   }
 `;

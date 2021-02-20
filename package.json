@@ -22,6 +22,7 @@
     "gatsby": "^2.26.1",
     "gatsby-image": "^2.8.0",
     "gatsby-plugin-manifest": "^2.9.0",
+    "gatsby-plugin-nprogress": "^2.10.0",
     "gatsby-plugin-offline": "^3.7.0",
     "gatsby-plugin-react-helmet": "^3.7.0",
     "gatsby-plugin-sharp": "^2.11.1",
@@ -36,6 +37,8 @@
     "react-card-flip": "^1.0.11",
     "react-dom": "^16.13.1",
     "react-helmet": "^6.1.0",
+    "react-multi-carousel": "^2.6.1",
+    "react-nprogress": "^0.1.6",
     "react-reveal": "^1.2.2",
     "stripe": "^8.129.0",
     "styled-components": "^5.2.1"

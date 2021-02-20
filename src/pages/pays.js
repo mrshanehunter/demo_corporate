@@ -4,17 +4,18 @@ import PaySuccess from "../components/PaySuccess";
 
 
 const ContainingDiv = styled.div`
-  width: 60%;
-  height: 80%;
-  margin: 5% auto;
+  width: 80%;
+  margin: 5rem auto;
+  display: flex;
+  justify-content: center;
 `;
 
 export default function paysPage(props) {
- 
+
 
   return (
     <ContainingDiv>
-      <PaySuccess />
+      <PaySuccess props={props} />
     </ContainingDiv>
   );
 }

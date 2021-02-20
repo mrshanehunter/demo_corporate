@@ -4,9 +4,8 @@ import styled from "styled-components";
 import Service from "../components/Service"
 
 const ContainingDiv = styled.div`
-  width: 70%;
-  height: 80%;
-  margin: 7.5% auto;
+  width: 80%;
+  margin: 5rem auto;
 `;
 
 export default function servicesPage({ data }) {

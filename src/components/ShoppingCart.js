@@ -1,16 +1,26 @@
-import React, { useContext, useEffect, useState } from "react"
+import React, { useContext, useEffect, useState, useRef } from "react"
 import Img from "gatsby-image"
 import styled from "styled-components"
+import NProgress from "react-nprogress";
+import "nprogress/nprogress.css";
 import CartContext from "../contexts/CartContext"
 import { loadStripe } from "@stripe/stripe-js"
 
 const stripePromise = loadStripe(process.env.GATSBY_STRIPE_KEY) 
 
+const CartContainer = styled.div`
+  width: 32rem;
+  margin: 2rem auto;
+  background: ${({ theme })=> theme.dblue};
+  border: thin solid ${({ theme }) => theme.silver};
+  border-radius: 2rem;
+`;
+
 const CartGrid = styled.div` 
   display: grid;
   grid-template-rows: subgrid(CartItemsGrid) 30rem;
   grid-auto-columns: auto;
-  margin-top: 12rem;
+  margin-top: 1rem;
   gap: 2rem;
   align-content: center;
   justify-content: center;
@@ -31,11 +41,17 @@ const CartItemsGrid = styled.div`
   
 `;
 
-
-
-
-
-
+const CartContactGrid = styled.div`
+  display: grid;
+  grid-template-rows: 2rem 2rem;
+  grid-auto-columns: 28rem;
+  gap: 1.5rem;
+  margin: 2rem;
+  input {
+    border-radius: 0.25rem;
+    font-size: 1.8rem;
+  }
+`;
 
 export default function ShoppingCart({ products }) {
 const cntxt = useContext(CartContext);
@@ -44,8 +60,10 @@ const cart = cntxt.cart;
 const setCart = cntxt.setCart;
 const cartTotal = cntxt.cartTotal;
 const setCartTotal = cntxt.setCartTotal;
-const sessId = cntxt.sessId;
-const setSessId = cntxt.sessId;
+const nameRef = useRef("");
+const surnameRef = useRef("");
+const emailRef = useRef("");
+
 
 
 const removeFromCart = (product) => {
@@ -61,7 +79,7 @@ const cartItems = cart.map((product) => (
   <div className="cartProduct"> {`${product.name}: $${product.price}`}</div>
     <input className="remove" disabled={loading} type="submit" value="Remove" onClick={() => removeFromCart(product)} />
   </CartItemsGrid>
- 
+  
  
 ))
 
@@ -76,53 +94,63 @@ const total = () => {
 
 useEffect(() => {
   total();
-},[]);
-
- 
- 
-
+});
 
   function cartSession(lineItems) {
-  console.log(lineItems);
-  fetch("http://localhost:8888/.netlify/functions/orderCreate", {
+  fetch(`${process.env.GATSBY_SERVERLESS_BASE}/orderCreate`, {
     method: "POST",
     body: JSON.stringify(lineItems),
   })
   .then(async response => {
     const { id } = await response.json();
+    sessionStorage.setItem("id", id);
     const stripe = await stripePromise;
     const { error } = await stripe.redirectToCheckout({ sessionId: id });
-    setSessId(id)
     console.log("Response", error.message)
   })
   .catch(err => console.log("catch", err.message))
   setLoading(!loading)
+  NProgress.done();
 }
 
-function checkOut(cartItems) {
-  console.log(cartItems)
+function checkOut(e) {
+  e.preventDefault();
+  NProgress.start();
   setLoading(loading);
+  const cName = nameRef.current.value;
+  const cSurname = surnameRef.current.value;
+  const cEmail = emailRef.current.value;
+  sessionStorage.setItem("cSurname", cSurname);
+  sessionStorage.setItem("cName", cName);
+  sessionStorage.setItem("cEmail", cEmail);
   const lineItems = cartItems.map((cartItem) => (
     {
       price: `${cartItem.key}`,
       quantity: 1,
     }
-  ))    
-   cartSession(lineItems); 
+  ))  
+  const newLines = JSON.stringify(lineItems);
+  sessionStorage.setItem("Items", newLines); 
+    cartSession(lineItems); 
   }
 
 
 return (
-  <>
+  <CartContainer>
 <CartGrid>
   {cartItems}
-  <div className="cartTtl">Total: ${cartTotal}</div>
-  <div className="cartGST">includes GST of ${(cartTotal - (cartTotal / 1.1)).toFixed(2)}</div>
+  <h3 className="cartTtl">Total: ${cartTotal}</h3>
+  <h4 className="cartGST">includes GST of ${(cartTotal - (cartTotal / 1.1)).toFixed(2)}</h4>
 </CartGrid>  
-
-  
-<button className="checkOut" disabled={loading} type="submit" onClick={() => checkOut(cartItems)}>Checkout</button>
- </>
+<CartContactGrid>
+    <div style={{display: `flex`, flexDirection: `row`}}>
+    <input type="text" name="Fname"ref={nameRef} placeholder="Your First Name" required style={{width: `14rem`}} />
+    <input type="text" name="Lname" ref={surnameRef} placeholder="Your Last Name" required style={{width: `14rem`}}/>
+    </div>
+    <input type="email" name="email" ref={emailRef} placeholder="Your Email Address" required />
+    </CartContactGrid>
+<button className="checkOut" disabled={loading} type="submit" onClick={(e) => checkOut(e)}>Checkout</button>
+ </CartContainer>
 )
 
 } 

@@ -31,7 +31,7 @@ export default function ContactIntro() {
   return (
     <StyledContactIntro>
       <Pulse forever={true}>
-      <Logo />
+      <Logo className="css animated"/>
       </Pulse>
       
       <h3>We're Here To Help</h3>

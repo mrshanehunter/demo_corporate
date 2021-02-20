@@ -17,7 +17,7 @@ export const ServiceStyleBack = styled.div`
   display: grid;
   grid-template-rows: 2.5rem 1fr 3rem;
   grid-template-columns: 30rem;
-  border: 1px solid ${({ theme }) => theme.lblue};
+  border: 1px solid ${({ theme }) => theme.dblue};
   background-color: ${({ theme }) => theme.silver};
   color: ${({ theme }) => theme.dblue};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.5);

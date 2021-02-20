@@ -3,9 +3,9 @@ import styled from "styled-components";
 import ShoppingCart from "../components/ShoppingCart";
 
 const ContainingDiv = styled.div`
-  width: 75%;
+  width: 80%;
   height: 90%;
-  margin: 5% auto;
+  margin: 5rem auto;
   display: flex;
   flex-direction: column;
 `;

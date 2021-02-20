@@ -5,7 +5,10 @@ const CartContext = React.createContext();
 export function CartProvider({ children }) {
   const [cart, setCart] = useState([])
   const [cartTotal, setCartTotal] = useState([])
-  const [sessId, setSessId] = useState("")
+  const [name, setName] = useState("")
+  const [surname, setSurname] = useState("")
+  const [email, setEmail] = useState("")
+
  
 
   const value = {
@@ -13,9 +16,12 @@ export function CartProvider({ children }) {
     setCart, 
     cartTotal,
     setCartTotal,
-    sessId,
-    setSessId,
-    
+    name,
+    setName,
+    surname,
+    setSurname,
+    email,
+    setEmail,
   }
 
   return (

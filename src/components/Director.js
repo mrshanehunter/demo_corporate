@@ -6,7 +6,7 @@ import styled from "styled-components";
 
 const DirectorCard = styled.div`
   width: 25rem;
-  height: 70rem;
+  height: auto;
   display: flex;
   flex-direction: column;
   border: 0.15rem solid ${({ theme }) => theme.silver};
@@ -15,6 +15,7 @@ const DirectorCard = styled.div`
   background: rgba(139,216,189,0.7);
   color: ${({ theme }) => theme.dblue};
   align-items: center;
+  text-align: center;
   margin-bottom: 1rem;
   h2 {
     font-size: 2.4rem;
@@ -35,9 +36,15 @@ const DirectorCard = styled.div`
       margin-top: 0;
     }
   @media (min-width: 768px) {
-    width: 22rem;
-    height: 77rem;
+    display: flex;
+    flex-direction: row;
+    width: 90%;
+    height: auto;
+    margin: 0 auto;
   }  
+  @media (min-width: 1024px) {
+    max-Width: 950px;
+  }
  `;
 
 const BioGrid = styled.div` 
@@ -48,7 +55,7 @@ const BioGrid = styled.div`
   padding: 1rem;
   margin-top: 5rem;
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
     gap: 4vw;
   }
  
@@ -73,11 +80,13 @@ function DirectorBio({ director }) {
   return (
     
       <DirectorCard>
+          <div className="detail">
           <StyledHead><Img fluid={director.image.asset.fluid} alt={director.name} /></StyledHead>
               <h2>
                 <span>{director.name} </span>
                </h2>
               <h4>{director.dirqual}</h4>
+              </div>
               <div className="desc">
                 <p>{director.description1}</p>
                 <p>{director.description2}</p>

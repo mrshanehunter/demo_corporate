@@ -5,14 +5,12 @@ import Product from "../components/Product";
 import ShoppingCartSummary from "../components/ShoppingCartSummary";
 
 const ContainingDiv = styled.div`
-  width: 75%;
-  height: 90%;
-  margin: 5% auto;
+  width: 80%;
+  margin: 5rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
   @media (max-width: 375px) {
-    width: 100%;
     flex-direction: column;
     margin: auto;
     align-items: center;

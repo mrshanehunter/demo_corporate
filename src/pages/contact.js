@@ -15,8 +15,8 @@ const ContainingDiv = styled.div`
     grid-template-columns: 1fr 1fr;
   }
   @media (min-width: 1024px) {
-    width: 95%;
     grid-template-columns: 1fr 1fr 1fr;
+    gap: 2vw;
   }
 `;
 

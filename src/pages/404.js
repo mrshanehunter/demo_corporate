@@ -1,53 +1,59 @@
 import * as React from "react"
 import { Link } from "gatsby"
+import styled from "styled-components";
+import Pulse from "react-reveal/Pulse";
+import Logo from "../components/Logo";
 
-// styles
-const pageStyles = {
-  color: "#232129",
-  padding: "96px",
-  fontFamily: "-apple-system, Roboto, sans-serif, serif",
-}
-const headingStyles = {
-  marginTop: 0,
-  marginBottom: 64,
-  maxWidth: 320,
-}
+const StyledContainer = styled.div`
+  width: 80%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+`;
 
-const paragraphStyles = {
-  marginBottom: 48,
-}
-const codeStyles = {
-  color: "#8A6534",
-  padding: 4,
-  backgroundColor: "#FFF4DB",
-  fontSize: "1.25rem",
-  borderRadius: 4,
-}
+const StyledTile = styled.div`
+  width: 30rem;
+  margin: 10rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: ${({ theme }) => theme.lblue};
+  border: 0.05rem solid ${({ theme }) => theme.silver};
+  color: ${({ theme }) => theme.dblue};
+  box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
+  padding: 1rem;
+  border-radius: 1rem;
+  h3 {
+    font-size: 2rem;
+    text-align: center;
+    margin: 0.5rem 2rem 1rem;
+  }
+  a {
+    text-decoration: none;
+    cursor: pointer;
+    font-size: 1.8rem;
+    margin: 1rem;
+    color: ${({ theme }) => theme.silver};
+  }
+`;
 
 // markup
 const NotFoundPage = () => {
   return (
-    <main style={pageStyles}>
-      <title>Not found</title>
-      <h1 style={headingStyles}>Page not found</h1>
-      <p style={paragraphStyles}>
-        Sorry{" "}
-        <span role="img" aria-label="Pensive emoji">
-          😔
-        </span>{" "}
-        we couldn’t find what you were looking for.
-        <br />
-        {process.env.NODE_ENV === "development" ? (
-          <>
-            <br />
-            Try creating a page in <code style={codeStyles}>src/pages/</code>.
-            <br />
-          </>
-        ) : null}
-        <br />
-        <Link to="/">Go home</Link>.
-      </p>
-    </main>
+    <StyledContainer>
+    <StyledTile>
+      <Pulse forever={true}>
+        <Logo />
+      </Pulse>
+      <h3>There's nothing to see here, literally.</h3>
+      <h3>The page or path you're looking for doesn't exist.</h3>
+      <h3>If you think it should, why not get in touch and let us know?</h3>
+      <Link to="/home">Click here to return to the site</Link>
+      </StyledTile>
+    </StyledContainer>
   )
 }
 

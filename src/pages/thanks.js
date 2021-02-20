@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {Link} from "gatsby";
 import styled from "styled-components";
 import Pulse from "react-reveal/Pulse";
@@ -6,7 +6,7 @@ import Logo from "../components/Logo";
 
 const StyledContainer = styled.div`
   width: 80%;
-  margin: 0 auto;
+  margin: 5rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -41,6 +41,15 @@ const StyledTile = styled.div`
 `;
 
 const ThanksPage = () => {
+
+  const [fullName, setFullName] = useState(""); 
+  let firstName = [];
+
+  useEffect(() => {
+    setFullName(sessionStorage.getItem("form"));
+    firstName = fullName.split(" ");
+  })
+ 
   return (
     
     <StyledContainer>
@@ -48,7 +57,7 @@ const ThanksPage = () => {
         <Pulse forever={true}>
           <Logo />
         </Pulse>
-        <h3>Your form has been submitted successfully.</h3>
+        <h3>Your form has been submitted successfully {firstName[0]}.</h3>
         <h3>Someone will contact you in the next 24 hours.</h3>
         <Link to="/home">Click here to continue browsing</Link>
         </StyledTile>

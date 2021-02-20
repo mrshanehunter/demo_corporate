@@ -58,21 +58,27 @@ const GlobalStyles = createGlobalStyle`
   .svcbtnf {
     width: 30rem;
     height: 3rem;
-    background: #8bd8bd;
-    border-color: #8bd8bd;
-    border-style: solid;
-    color: #111b30;
     margin: 0;
+    background: ${({ theme }) => theme.primaryHover};
+    color: ${({ theme }) => theme.dblue};
+    border-style: none;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    font-family: "futura-pt";
+    text-transform: uppercase;
     cursor: pointer;
   }
   .svcbtnb {
     width: 30rem;
     height: 3rem;
-    background: #1978a5;
-    border-color: #1978a5;
-    border-style: solid;
-    color: #111b30;
     margin: 0;
+    background: ${({ theme }) => theme.dblue};
+    color: ${({ theme }) => theme.primaryHover};
+    border-style: none;
+    font-size: 1.6rem;
+    letter-spacing: 2px;
+    font-family: "futura-pt";
+    text-transform: uppercase;
     cursor: pointer;
     
   }
@@ -131,11 +137,14 @@ const GlobalStyles = createGlobalStyle`
     width: 75%;
     padding: 0.75rem 0;
     margin: 0 auto;
-    background: ${({ theme }) => theme.lblue};
-    border-color: ${({ theme }) => theme.primaryHover};
-    color: ${({ theme }) => theme.silver};
+    background: ${({ theme }) => theme.primaryHover};
+    border-color: ${({ theme }) => theme.silver};
+    color: ${({ theme }) => theme.dblue};
     font-size: 1.6rem;
     border-radius: 5px;
+    letter-spacing: 2px;
+    font-family: "futura-pt";
+    text-transform: uppercase;
   }
   
 .ratestable {
@@ -154,19 +163,25 @@ const GlobalStyles = createGlobalStyle`
   font-size: 2rem;
   text-align: center;
   color: ${({ theme }) => theme.silver};
+  text-transform: uppercase;
+  margin: 0;
 }
 .cartGST {
   font-size: 1.4rem;
   font-style: italic;
   text-align: center;
   color: ${({ theme }) => theme.silver};
+  text-transform: uppercase;
+  margin: 0;
 }
 .checkOut {
-  margin-top: 3rem;
   width: 60%;
   margin-left: 20%;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
   background-color: ${({ theme }) => theme.primaryHover};
   font-size: 1.8rem;
+  font-family: "futura-pt";
   padding: 1rem;
   border-color: ${({ theme }) => theme.silver};
   text-transform: uppercase;
@@ -179,11 +194,12 @@ const GlobalStyles = createGlobalStyle`
 }
 .remove {
   background: transparent;
-  border: 0.05rem solid ${({ theme }) => theme.lblue};
+  border: 0.05rem solid ${({ theme }) => theme.primaryHover};
   border-radius: 5px;
   color: ${({ theme }) => theme.silver};
   text-align: center;
   text-transform: uppercase;
+  font-family: "futura-pt";
   box-shadow: 0.05rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
   letter-spacing: 2px;
   padding: 0.5rem 0;
@@ -191,6 +207,16 @@ const GlobalStyles = createGlobalStyle`
   width: 50%;
   margin-left: 25%;
 }
+
+.carousel-container {
+  visibility: hidden;
+  @media (min-width: 768px) {
+    visibility: visible;
+  }
+}
+
+
+
 `;
 
 export default GlobalStyles;

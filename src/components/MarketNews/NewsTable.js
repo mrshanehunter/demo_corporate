@@ -5,9 +5,10 @@ const StyledNews = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   grid-auto-rows: auto;
-  gap: 1.5rem;
-  margin: 4rem 1rem;
-  background: ${({ theme }) => theme.lblue};
+  width: 100%;
+  gap: 1rem;
+  margin-top: 4rem;
+  background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
@@ -15,12 +16,17 @@ const StyledNews = styled.div`
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: auto;
+    width: 100%;
+  }
 `;
 
 const StyledNewsItem = styled.div`
-  width: 25rem;
+  width: 35rem;
   margin: 0 auto;
-  background: ${({ theme }) => theme.dblue};
+  background: ${({ theme }) => theme.blue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
@@ -48,6 +54,9 @@ const StyledNewsItem = styled.div`
       color: ${({ theme }) => theme.silver};
     }
   }
+  @media (min-width: 1024px) {
+    width: 25rem;
+  }
 `;
 
 function NewsItem({ item }) {
@@ -70,6 +79,7 @@ const NewsTable = (props) => {
 
   if (!news || news.length === 0) return <p>No News available today</p>;
   return (
+   
     <StyledNews>
       {news.map((item) => (
         <NewsItem key={item.id} item={item} />

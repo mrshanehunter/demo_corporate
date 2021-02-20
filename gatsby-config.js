@@ -3,6 +3,9 @@ require("dotenv").config();
 module.exports = {
   siteMetadata: {
     title: `Demo_Corporate`,
+    description: `Corporate Styled Website with some eCommerce functionality`,
+    author: `mrshanehunter`,
+    siteUrl: `localhost:8888`,
   },
   plugins: [
     {
@@ -10,7 +13,7 @@ module.exports = {
       options: {
         projectId: `9xy1rkv8`,
         dataset: `production`,
-        watchMode: true,
+        watchMode: false,
         token: process.env.SANITY_TOKEN,
       },
     },
@@ -48,6 +51,12 @@ module.exports = {
         typekit: {
           id: process.env.TYPEKIT_ID,
         }
+      }
+    },
+    {
+      resolve: `gatsby-plugin-nprogress`,
+      options: {
+        color: `tomato`,
       }
     }
   ],

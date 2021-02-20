@@ -1,11 +1,35 @@
 import React from "react";
 import styled from "styled-components";
 
+
+
+
+const StyledRatesContainer = styled.div`
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  margin-top: 4rem;
+  background: ${({ theme }) => theme.dblue};
+  border: 0.05rem solid ${({ theme }) => theme.silver};
+  box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
+  border-radius: 1rem;
+  padding: 1rem;
+ 
+  @media (min-width: 768px) {
+    grid-template-columns: 1fr;
+    
+  }
+  @media (min-width: 1024px) {
+    grid-template-columns: 1fr;
+  }
+`;
+
+
 const StyledExchange = styled.div`
-  width: 20rem;
-  /* height: 40rem; */
-  margin: 4rem 1rem;
-  background: ${({ theme }) => theme.blue};
+  width: 100%;
+  margin: 0 auto;
+  color: ${({ theme }) => theme.lblue};
+  background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
@@ -13,24 +37,48 @@ const StyledExchange = styled.div`
   h2 {
     font-size: 1.8rem;
     text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.25rem;
+  }
+  h3 {
+    font-size: 1.4rem;
+    text-align: center;
+    text-transform: uppercase;
+    width: 80%;
+    margin: 0 auto 2rem;
   }
   p {
     font-size: 1.8rem;
+    color: ${({ theme }) => theme.silver};
   }
   div {
     padding: 1.5rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: center;
   }
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
-    width: 97.5%;
-    grid-template-rows: auto auto 1rem 1fr 1rem auto;
+    width: 100%;
+    grid-template-rows: auto auto 0.25rem 1fr 0.25rem auto;
+    div {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      text-align: center;
+    }
   }
   @media (min-width: 1024px) {
-    width: 25rem;
+    grid-template-rows: auto auto auto 1fr auto auto;
+    div {
+      display: grid;
+      grid-template-columns: 1fr;
+      text-align: center;
+    }
+    p {
+      margin-top: 0.45rem;
+      
+    }
   }
 `;
 
@@ -41,10 +89,11 @@ const RatesTable = (props) => {
 
   if (!rates || rates.length === 0) return <p>No rates available today</p>;
   return (
+    <StyledRatesContainer>
     <StyledExchange>
       <h2>FOREX Rates</h2>
       <h2>Base Rate: ${rates.data.base}</h2>
-      <hr />
+      <div style={{width: `80%`, height: `0.1rem`, marginTop: `0`, paddingTop: `0`, marginBottom: `2rem`, marginLeft: `10%`, borderBottom: `thin solid #8bd8bd`}}></div>
       <div>
         <p>USD: ${rates.data.quote.USD.toFixed(4)}</p>
         <p>EUR: &euro;{rates.data.quote.EUR.toFixed(4)}</p>
@@ -59,9 +108,10 @@ const RatesTable = (props) => {
         <p>CAD: ${rates.data.quote.CAD.toFixed(4)}</p>
         <p>ZAR: &#x52;{rates.data.quote.ZAR.toFixed(4)}</p>
       </div>
-      <hr />
-      <h2>Updated {now}</h2>
+      <div style={{width: `80%`, height: `0.1rem`, marginTop: `0`, paddingTop: `0`, marginBottom: `2rem`, marginLeft: `10%`, borderTop: `thin solid #8bd8bd`}}></div>
+      <h3>Updated {now}</h3>
     </StyledExchange>
+    </StyledRatesContainer>
   );
 };
 

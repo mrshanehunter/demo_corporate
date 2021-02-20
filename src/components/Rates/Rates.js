@@ -28,7 +28,6 @@ useEffect(() => {
   fetch(`http://data.fixer.io/api/latest?access_key=${APIkey}&symbols=USD,AUD,GBP,EUR,CAD,NZD,SGD,HKD`)
     .then((response) => response.json())
     .then((rates) => {
-    console.log(rates);
     setAppState({ loading: false, rates: rates });
   });
 }, [setAppState]);
