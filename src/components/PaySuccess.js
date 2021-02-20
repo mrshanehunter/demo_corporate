@@ -41,7 +41,7 @@ export default function PaySuccess(props) {
   
   
   const [cName, setCName] = useState("");
-  const [products, setProducts] = useState();
+  const [products, setProducts] = useState([]);
   const [sesh, setSesh] = useState("");
     
   const { refdata } = useStaticQuery(graphql`
