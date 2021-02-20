@@ -39,9 +39,9 @@ const StyledContainer = styled.div`
 
 export default function PaySuccess(props) {
   
-  
+  let products = [];
   const [cName, setCName] = useState("");
-  const [products, setProducts] = useState([]);
+  const [productDetails, setProductDetails] = useState([]);
   const [sesh, setSesh] = useState("");
     
   const { refdata } = useStaticQuery(graphql`
@@ -57,9 +57,9 @@ export default function PaySuccess(props) {
 
     useEffect(() => {
       setCName(sessionStorage.getItem("cName"));
-      setProducts(sessionStorage.getItem("Items"));
+      setProductDetails(sessionStorage.getItem("Items"));
       setSesh(sessionStorage.getItem("id"));
-      
+      products = JSON.parse(productDetails);
     })
 
   const data = refdata.nodes 
