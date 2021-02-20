@@ -37,8 +37,11 @@ const StyledContainer = styled.div`
 
 `;
 
+
+
+
 export default function PaySuccess(props) {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   let products = [];
   const [cName, setCName] = useState("");
   const [productDetails, setProductDetails] = useState([]);
@@ -56,15 +59,24 @@ export default function PaySuccess(props) {
   `);
 
     useEffect(() => {
-      if (loading) {
-      setCName(sessionStorage.getItem("cName"))
-      .then(() => {
-      setProductDetails(sessionStorage.getItem("Items"));
-      setSesh(sessionStorage.getItem("id"));
-    }).then(() => {
-      products = JSON.parse(productDetails);
-    })
-  } setLoading(false)
+     let finished = false;
+
+     const runSet = async () => {
+      await setCName(sessionStorage.getItem("cName"));
+      await setProductDetails(sessionStorage.getItem("Items"));
+      await setSesh(sessionStorage.getItem("id"));
+      setLoading(loading);
+      if (loading && cName !== "") {
+        products = JSON.parse(productDetails);
+        finished = true;
+      }
+    }  
+      runSet();
+
+      if (finished) {
+        setLoading(!loading)
+      }
+ 
 })
 
   const data = refdata.nodes 
