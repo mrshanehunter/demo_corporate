@@ -41,27 +41,24 @@ const StyledTile = styled.div`
 `;
 
 const ThanksPage = () => {
-  const [loading, setLoading] = useState(false);
+
   const [fullName, setFullName] = useState(""); 
   let firstName = [];
 
   useEffect(() => {
     let done = false;
+    
+    const splitIt = async () => {
+      await firstName = fullName.split(" ");
+    }
 
     const timing = async () => {
       await setFullName(sessionStorage.getItem("form"));
-      await setLoading(loading);
-      if (loading && fullName !== "") {
-        firstName = fullName.split(" ");
-        done = true;
-      } 
+      await splitIt();
     }
     
     timing()
 
-    if (done) {
-    setLoading(!loading);
-    }
   })
  
   return (
@@ -71,7 +68,7 @@ const ThanksPage = () => {
         <Pulse forever={true}>
           <Logo />
         </Pulse>
-        <h3>Your form has been submitted successfully {firstName[0]}.</h3>
+        <h3>Your form has been submitted successfully {firstName[0]}</h3>
         <h3>Someone will contact you in the next 24 hours.</h3>
         <Link to="/home">Click here to continue browsing</Link>
         </StyledTile>
