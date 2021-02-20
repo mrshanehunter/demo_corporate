@@ -46,8 +46,17 @@ const ThanksPage = () => {
   let firstName = [];
 
   useEffect(() => {
-    setFullName(sessionStorage.getItem("form"));
+    let done = false;
+
+    const timing = async () => {
+    await setFullName(sessionStorage.getItem("form"));
+    done = true;
+    }
+    timing()
+
+    if (done) {
     firstName = fullName.split(" ");
+    }
   })
  
   return (
