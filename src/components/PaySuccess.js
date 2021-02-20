@@ -38,7 +38,7 @@ const StyledContainer = styled.div`
 `;
 
 export default function PaySuccess(props) {
-  
+  const [loading, setLoading] = useState(true);
   let products = [];
   const [cName, setCName] = useState("");
   const [productDetails, setProductDetails] = useState([]);
@@ -56,11 +56,16 @@ export default function PaySuccess(props) {
   `);
 
     useEffect(() => {
-      setCName(sessionStorage.getItem("cName"));
+      if (loading) {
+      setCName(sessionStorage.getItem("cName"))
+      .then(() => {
       setProductDetails(sessionStorage.getItem("Items"));
       setSesh(sessionStorage.getItem("id"));
+    }).then(() => {
       products = JSON.parse(productDetails);
     })
+  } setLoading(false)
+})
 
   const data = refdata.nodes 
   let resItems = [];
