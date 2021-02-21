@@ -2,34 +2,44 @@ import React from "react";
 import styled from "styled-components";
 
 const StyledNews = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-auto-rows: auto;
-  width: 100%;
-  gap: 1rem;
+  width: 30rem;
   margin-top: 4rem;
   background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
   padding: 1rem;
+  
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
+    grid-auto-rows: auto;
+    gap: 1rem;
+    width: 90%;
+    margin: 0 auto 2rem;
   }
   @media (min-width: 1024px) {
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    grid-auto-rows: auto;
+    gap: 1rem;
     width: 100%;
+    margin: 0;
   }
 `;
 
 const StyledNewsItem = styled.div`
-  width: 35rem;
-  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  width: 28rem;
+  margin: 0 auto 1rem;
   background: ${({ theme }) => theme.blue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
+  :nth-child(6) {
+    margin-bottom: 0;
+  }
   h2 {
     margin-bottom: 0.5rem;
     padding: 0 1rem;
@@ -48,14 +58,20 @@ const StyledNewsItem = styled.div`
     margin-bottom: 0;
     padding: 0.5rem;
     p {
+      flex: 1;
       font-size: 1.5rem;
       padding: 0.5rem;
       align-items: flex-start;
       color: ${({ theme }) => theme.silver};
     }
   }
+  @media (min-width: 768px) {
+    width: 28rem;
+    margin-bottom: 0;
+  }
   @media (min-width: 1024px) {
-    width: 25rem;
+    width: 32rem;
+    margin-bottom: 0;
   }
 `;
 

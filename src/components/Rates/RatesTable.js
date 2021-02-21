@@ -5,22 +5,26 @@ import styled from "styled-components";
 
 
 const StyledRatesContainer = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
+  width: 30rem;
   margin-top: 4rem;
   background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
   padding: 1rem;
+  
+  
  
   @media (min-width: 768px) {
-    grid-template-columns: 1fr;
+    width: 90%;
+    margin: 0 auto 2rem;
     
   }
   @media (min-width: 1024px) {
-    grid-template-columns: 1fr;
+    width: 40%;
+    max-height: 850px;
+    margin: 0;
+
   }
 `;
 
@@ -64,7 +68,7 @@ const StyledExchange = styled.div`
     grid-template-rows: auto auto 0.25rem 1fr 0.25rem auto;
     div {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr 1fr 1fr;
       text-align: center;
     }
   }
@@ -72,7 +76,7 @@ const StyledExchange = styled.div`
     grid-template-rows: auto auto auto 1fr auto auto;
     div {
       display: grid;
-      grid-template-columns: 1fr;
+      grid-template-columns: 1fr 1fr;
       text-align: center;
     }
     p {

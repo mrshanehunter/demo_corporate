@@ -10,12 +10,13 @@ import SEO from "../components/SEOComponent";
 const ContainingDiv = styled.div`
   width: 80%;
   margin: 5rem auto;
-  display: grid;
-  grid-template-columns: 1fr;
+  
   
   @media (min-width: 768px) {
+    width: 90%;
     display: grid;
     grid-template-rows: 1fr auto;
+    gap: 4rem;
     grid-template-columns: 1fr;
     margin: 14rem auto 2rem;
   }
@@ -28,21 +29,20 @@ const ContainingDiv = styled.div`
 `;
 
 const SubGridDiv = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  justify-content: center;
-  margin: 2vw auto;
+  display: flex;
+  justify-content: space-evenly;
+  align-content: center;
+  flex-direction: column;
+ 
 
-  @media (min-width: 768px) {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2vw;
-    margin: 0 auto;
-  }
+ 
 
   @media (min-width: 1024px) {
-    display: grid;
-    grid-template-columns: 1fr 0.5fr 1fr;
+   display: flex; 
+   flex-direction: row;
+   flex-wrap: wrap;
+   justify-content: space-between;
+   align-content: flex-start;
   
   }
 `;

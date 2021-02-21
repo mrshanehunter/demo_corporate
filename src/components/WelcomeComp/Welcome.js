@@ -4,34 +4,26 @@ import Pulse from "react-reveal/Pulse";
 import Logo from "../Logo";
 
 const StyledWelcome = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  margin: 4rem 0 0;
+  width: 30rem;
+  margin-top: 4rem;
   background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
   padding: 1rem;
-  h2 {
-    font-size: 1.8rem;
-    text-align: center;
-  }
-  p {
-    font-size: 1.8rem;
-  }
-  div {
-    padding: 1rem;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-  }
+ 
+ 
+ 
+ 
   @media (min-width: 768px) {
-    grid-template-columns: 1fr;
-    margin: 4rem auto 0;
+   width: 90%;
+   margin: 0 auto 2rem; 
   }
   @media (min-width: 1024px) {
-    grid-template-columns: 1fr;
+   width: 55%;
+   max-height: 850px;
+   margin: 0;
+   
     
   }
 `;
@@ -43,16 +35,22 @@ const StyledWelcomeMessage = styled.div`
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
+  div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 `;
 
 const StyledCopy = styled.div`
   color: ${({ theme }) => theme.primaryHover};
-  width: 100%;
+  
   h2 {
     margin: 0;
     text-transform: uppercase;
     font-size: 1.8rem;
-    padding: 1.5rem 0;
+    padding: 1rem 0;
+    text-align: center;
   }
   p {
   padding: 0 2.5rem;
@@ -65,17 +63,18 @@ const StyledCopy = styled.div`
     text-transform: uppercase;
     padding-right: 2rem;
     padding-bottom: 0.4rem;
+    flex: 1;
   }
 `;
 
 function CopyDetails({ copy }) {
   return (
-    <StyledWelcome>
+    
       <StyledWelcomeMessage>
         <Pulse forever={true}>
           <Logo />
         </Pulse>
-        <>
+        <StyledCopy>
           <p>{copy.para1}</p>
           <h2>{copy.heading1}</h2>
           <p>{copy.para2}</p>
@@ -85,18 +84,18 @@ function CopyDetails({ copy }) {
             <li>{copy.heading4}</li>
           </ol>
           <p>{copy.para1}</p>
-        </>
+          </StyledCopy>
       </StyledWelcomeMessage>
-    </StyledWelcome>
+    
   );
 }
 
 export default function Welcome({ copies }) {
   return (
-    <StyledCopy>
+    <StyledWelcome>
       {copies.map((copy) => (
         <CopyDetails key={copy.id} copy={copy} />
       ))}
-    </StyledCopy>
+    </StyledWelcome>
   );
 }
