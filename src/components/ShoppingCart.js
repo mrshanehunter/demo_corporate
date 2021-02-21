@@ -13,7 +13,7 @@ const CartContainer = styled.div`
   margin: 2rem auto;
   background: ${({ theme })=> theme.dblue};
   border: thin solid ${({ theme }) => theme.silver};
-  border-radius: 2rem;
+  border-radius: 1rem;
 `;
 
 const CartGrid = styled.div` 
