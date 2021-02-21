@@ -4,6 +4,8 @@ import Slide from "react-reveal";
 import styled from "styled-components";
 import CartContext from "../contexts/CartContext";
 
+/* Slide is causing screen shift on siblings when activated */
+
 const ProductsGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
