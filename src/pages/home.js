@@ -8,10 +8,11 @@ import HomeCarousel from "../components/HomeCarousel";
 import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
-  width: 90%;
+  width: 80%;
+  margin: 5rem auto;
   display: grid;
   grid-template-columns: 1fr;
-  margin: 5rem auto;
+  
   @media (min-width: 768px) {
     display: grid;
     grid-template-rows: 1fr auto;
@@ -29,9 +30,7 @@ const ContainingDiv = styled.div`
 const SubGridDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  align-items: start;
-  justify-items: center;
-  width: 80%;
+  justify-content: center;
   margin: 2vw auto;
 
   @media (min-width: 768px) {
