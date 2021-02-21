@@ -29,16 +29,16 @@ const ContainingDiv = styled.div`
 const SubGridDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;
-  gap: 2vw;
   align-items: start;
   justify-items: center;
   width: 100%;
-  margin: 0 auto;
+  margin: 2vw auto;
 
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: 1fr;
-    
+    gap: 2vw;
+    margin: 0 auto;
   }
 
   @media (min-width: 1024px) {
