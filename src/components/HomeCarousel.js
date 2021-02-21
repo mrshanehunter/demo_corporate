@@ -38,7 +38,7 @@ return (
   removeArrowOnDeviceType={["tablet", "mobile"]}
   deviceType={props.deviceType}
   dotListClass="custom-dot-list-style"
-  itemClass="carousel-item-padding-4-px"
+  itemClass="carousel-item-padding-40-px"
 >
   <div>
     <CarouselImage1 />

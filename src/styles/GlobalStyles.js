@@ -213,6 +213,9 @@ const GlobalStyles = createGlobalStyle`
   visibility: hidden;
   @media (min-width: 768px) {
     visibility: visible;
+    border-top: 4px ridge ${({ theme }) => theme.silver};
+    border-bottom: 3px groove ${({ theme }) => theme.silver};
+    box-shadow: 0.05rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
   }
 }
 
