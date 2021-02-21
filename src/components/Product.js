@@ -1,6 +1,5 @@
 import React, { useState, useContext } from "react";
 import Img from "gatsby-image";
-import Slide from "react-reveal";
 import ReactCardFlip from "react-card-flip";
 import styled from "styled-components";
 import CartContext from "../contexts/CartContext";

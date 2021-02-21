@@ -5,8 +5,11 @@ import CartContext from "../contexts/CartContext";
 
 
 const StyledShoppingCartSummaryZero = styled.div`
+  visibility: hidden;
   width: 30%;
-  height: 2.8rem;
+  font-size: 1.8rem;
+  margin-top: 4rem;
+  padding: 1rem;
 `;
 
 const StyledShoppingCartSummary = styled.div`
@@ -37,7 +40,7 @@ export default function ShoppingCartSummary() {
   const contxt = useContext(CartContext);
 
   if (contxt.cart.length === 0) {
-    return <StyledShoppingCartSummaryZero></StyledShoppingCartSummaryZero>;
+    return <StyledShoppingCartSummaryZero>There is nothing in your cart</StyledShoppingCartSummaryZero>;
   } else if (contxt.cart.length === 1) {
     return (
       <StyledShoppingCartSummary>
