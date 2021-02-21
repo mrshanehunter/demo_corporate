@@ -8,7 +8,7 @@ import HomeCarousel from "../components/HomeCarousel";
 import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
-  width: 80%;
+  width: 90%;
   display: grid;
   grid-template-columns: 1fr;
   margin: 5rem auto;

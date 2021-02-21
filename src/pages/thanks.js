@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import {Link} from "gatsby";
 import styled from "styled-components";
 import Pulse from "react-reveal/Pulse";
@@ -43,24 +43,6 @@ const StyledTile = styled.div`
 
 const ThanksPage = () => {
 
-  const [fullName, setFullName] = useState(""); 
-  const [firstName, setFirstName] = useState([]);
- 
-
-  useEffect(() => {
-        
-    const splitIt = async () => {
-      await setFirstName(fullName.split(" "))
-    }
-
-    const timing = async () => {
-      await setFullName(sessionStorage.getItem("form"));
-      await splitIt();
-    }
-    
-    timing()
-
-  })
  
   return (
     <>
@@ -70,7 +52,7 @@ const ThanksPage = () => {
         <Pulse forever={true}>
           <Logo />
         </Pulse>
-        <h3>Your form has been submitted successfully {firstName[0]}</h3>
+        <h3>Your form has been submitted successfully</h3>
         <h3>Someone will contact you in the next 24 hours.</h3>
         <Link to="/home">Click here to continue browsing</Link>
         </StyledTile>
