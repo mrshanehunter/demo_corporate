@@ -31,7 +31,7 @@ const SubGridDiv = styled.div`
   grid-template-columns: 1fr;
   align-items: start;
   justify-items: center;
-  width: 100%;
+  width: 80%;
   margin: 2vw auto;
 
   @media (min-width: 768px) {
