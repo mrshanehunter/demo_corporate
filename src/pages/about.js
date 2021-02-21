@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components"
 import Director from "../components/Director"
+import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
 width: 60%;
@@ -23,12 +24,12 @@ export default function aboutPage({ data }) {
 const directors = data.directors.nodes;
 
 return (
-
-   
+  <>  
+    <SEO title="About" />  
       <ContainingDiv>
         <Director directors={directors} />
       </ContainingDiv>
-   
+  </> 
 
 );
 }

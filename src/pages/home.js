@@ -5,6 +5,7 @@ import News from "../components/MarketNews/News";
 import Welcome from "../components/WelcomeComp/Welcome";
 import styled from "styled-components";
 import HomeCarousel from "../components/HomeCarousel";
+import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
   width: 80%;
@@ -50,8 +51,9 @@ const SubGridDiv = styled.div`
 export default function homePage(props) {
   const copies = props.data.boilerplates.nodes;
   return (
+    <>
+    <SEO title="Home" />
     <ContainingDiv>
-      {/* <DateDisplay /> */}
       <HomeCarousel props={props} />
       <SubGridDiv>
         <Welcome copies={copies} />
@@ -59,6 +61,7 @@ export default function homePage(props) {
         <News />
       </SubGridDiv>
     </ContainingDiv>
+    </>
   );
 }
 

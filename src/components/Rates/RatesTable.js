@@ -28,7 +28,7 @@ const StyledRatesContainer = styled.div`
 const StyledExchange = styled.div`
   width: 100%;
   margin: 0 auto;
-  color: ${({ theme }) => theme.lblue};
+  color: ${({ theme }) => theme.primaryHover};
   background: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);

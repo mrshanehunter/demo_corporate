@@ -34,6 +34,9 @@ const StyledContainer = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
+  p {
+    overflow-wrap: break-word;
+  }
 
 `;
 
@@ -100,7 +103,8 @@ nameFind(data, products);
       <StyledContainer>
         <h3>Thanks for your purchase {cName}</h3>
      <h4>Your tax invoice is being sent via email.</h4>
-     <h4>Until it arrives, take note of this reference:{sesh}</h4>
+     <h4>Until it arrives, take note of this reference:</h4>
+     <p>{sesh}</p>
      <h4>We will be in contact with you shortly to make arrangements for your purchases</h4>
      <Link to="/home">Click Here To Continue Browsing</Link>
       </StyledContainer>

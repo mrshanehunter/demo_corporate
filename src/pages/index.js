@@ -3,6 +3,7 @@ import { Link } from 'gatsby';
 import styled from 'styled-components';
 import Pulse from 'react-reveal/Pulse';
 import Logo from '../components/Logo';
+import SEO from "../components/SEOComponent";
 
 const LandingStyle = styled.div`
   background-color: #1978a5;
@@ -24,6 +25,7 @@ const LandingStyle = styled.div`
 export default function indexPage(){
   return(
     <>
+    <SEO title="Index" />
     <LandingStyle>
       <Link to="/home">
         <Pulse forever={true}>

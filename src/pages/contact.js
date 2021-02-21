@@ -4,6 +4,7 @@ import Contact from "../components/Contact";
 import ContactIntro from "../components/ContactIntro";
 import ContactForm from "../components/ContactForm";
 import styled from "styled-components";
+import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
   width: 80%;
@@ -24,11 +25,14 @@ export default function contactPage( props ) {
   const contacts = props.data.contacts.nodes;
   const location = props.location;
   return (
+    <>
+    <SEO title="Contact Form / Details" />
     <ContainingDiv>
       <ContactIntro />
       <ContactForm location={location}/>
       <Contact contacts={contacts} />
     </ContainingDiv>
+    </>
   );
 }
 

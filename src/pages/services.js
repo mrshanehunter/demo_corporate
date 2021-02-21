@@ -2,6 +2,7 @@ import React from "react";
 import { graphql } from "gatsby";
 import styled from "styled-components";
 import Service from "../components/Service"
+import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
   width: 80%;
@@ -12,11 +13,12 @@ export default function servicesPage({ data }) {
   const services = data.services.nodes;
   
   return (
-   
+   <>
+    <SEO title="Services" />
       <ContainingDiv>
          <Service services={services}/>
       </ContainingDiv>
-    
+   </> 
   );
 }
 

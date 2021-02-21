@@ -3,6 +3,7 @@ import { graphql } from "gatsby";
 import styled from "styled-components";
 import Product from "../components/Product";
 import ShoppingCartSummary from "../components/ShoppingCartSummary";
+import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
   width: 80%;
@@ -26,10 +27,13 @@ export default function shopPage({ data }) {
   const products = data.products.nodes;
   
   return (
+    <>
+    <SEO title="SAS Shop" />
     <ContainingDiv>
           <ShoppingCartSummary style={{fontSize: `3rem`, width: `100%`}} />
           <Product products={products}/>
       </ContainingDiv>
+    </>  
   );
 }
 

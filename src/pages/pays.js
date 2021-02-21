@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PaySuccess from "../components/PaySuccess";
+import SEO from "../components/SEOComponent";
 
 
 const ContainingDiv = styled.div`
@@ -14,9 +15,12 @@ export default function paysPage(props) {
 
 
   return (
+    <>
+    <SEO title="Payment Processed" />
     <ContainingDiv>
       <PaySuccess props={props} />
     </ContainingDiv>
+    </>
   );
 }
 

@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import SEO from "../components/SEOComponent";
 import ShoppingCart from "../components/ShoppingCart";
 
 const ContainingDiv = styled.div`
@@ -11,15 +12,13 @@ const ContainingDiv = styled.div`
 `;
 
 export default function cartPage({ data }) {
-  
-
   return (
-    
+    <>
+      <SEO title="SAS Cart" />
       <ContainingDiv>
         <ShoppingCart style={{ fontSize: `3rem`, width: `100%` }} />
-       
       </ContainingDiv>
-   
+    </>
   );
 }
 

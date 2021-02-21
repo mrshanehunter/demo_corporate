@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components";
 import Pulse from "react-reveal/Pulse";
 import Logo from "../components/Logo";
+import SEO from "../components/SEOComponent";
 
 const StyledContainer = styled.div`
   width: 80%;
@@ -43,6 +44,8 @@ const StyledTile = styled.div`
 // markup
 const NotFoundPage = () => {
   return (
+    <>
+    <SEO title="404 - Not Found" />
     <StyledContainer>
     <StyledTile>
       <Pulse forever={true}>
@@ -54,6 +57,7 @@ const NotFoundPage = () => {
       <Link to="/home">Click here to return to the site</Link>
       </StyledTile>
     </StyledContainer>
+    </>
   )
 }
 

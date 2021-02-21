@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import PayReject from "../components/PayReject";
+import SEO from "../components/SEOComponent";
 
 const ContainingDiv = styled.div`
   width: 80%;
@@ -11,8 +12,11 @@ const ContainingDiv = styled.div`
 
 export default function payrPage() {
   return (
+    <>
+    <SEO title="No Payment Processed" />
     <ContainingDiv>
       <PayReject />
     </ContainingDiv>
+    </>
   );
 }

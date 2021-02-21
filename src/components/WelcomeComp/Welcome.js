@@ -40,14 +40,13 @@ const StyledWelcomeMessage = styled.div`
   width: 100%;
   margin: 0 auto;
   background: ${({ theme }) => theme.lblue};
-  color: ${({ theme }) => theme.dblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
 `;
 
 const StyledCopy = styled.div`
-  color: ${({ theme }) => theme.dblue};
+  color: ${({ theme }) => theme.primaryHover};
   width: 100%;
   h2 {
     margin: 0;
@@ -58,6 +57,7 @@ const StyledCopy = styled.div`
   p {
   padding: 0 2.5rem;
   font-size: 1.6rem;
+  color: ${({ theme }) => theme.dblue};
   }
   li {
     font-size: 1.6rem;

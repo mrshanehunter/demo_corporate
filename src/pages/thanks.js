@@ -3,6 +3,7 @@ import {Link} from "gatsby";
 import styled from "styled-components";
 import Pulse from "react-reveal/Pulse";
 import Logo from "../components/Logo";
+import SEO from "../components/SEOComponent";
 
 const StyledContainer = styled.div`
   width: 80%;
@@ -43,13 +44,13 @@ const StyledTile = styled.div`
 const ThanksPage = () => {
 
   const [fullName, setFullName] = useState(""); 
-  let firstName = [];
+  const [firstName, setFirstName] = useState([]);
+ 
 
   useEffect(() => {
-    let done = false;
-    
+        
     const splitIt = async () => {
-      firstName = await fullName.split(" ");
+      await setFirstName(fullName.split(" "))
     }
 
     const timing = async () => {
@@ -62,7 +63,8 @@ const ThanksPage = () => {
   })
  
   return (
-    
+    <>
+    <SEO title="Contact Form Received" />
     <StyledContainer>
       <StyledTile>
         <Pulse forever={true}>
@@ -73,7 +75,7 @@ const ThanksPage = () => {
         <Link to="/home">Click here to continue browsing</Link>
         </StyledTile>
       </StyledContainer>
-   
+    </>
   )
 }
 
