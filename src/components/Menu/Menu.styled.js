@@ -6,7 +6,7 @@ export const StyledMenu = styled.nav`
   justify-content: center;
   background: ${({ theme }) => theme.lblue};
   box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
-  height: 100vh;
+  min-height: 100vh;
   text-align: left;
   padding: 2rem;
   position: absolute;

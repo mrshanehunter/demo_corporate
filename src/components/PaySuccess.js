@@ -36,6 +36,10 @@ const StyledContainer = styled.div`
   }
   p {
     overflow-wrap: break-word;
+    font-size: 1.2rem;
+    width: 90%;
+    margin: 2rem auto;
+    color: ${({ theme }) => theme.silver};
   }
 
 `;
