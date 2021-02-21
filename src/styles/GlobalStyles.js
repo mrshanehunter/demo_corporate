@@ -85,30 +85,46 @@ const GlobalStyles = createGlobalStyle`
   .slideBtn {
     background: none;
     border-style: none;
-    border-top: 0.05rem solid ${({ theme }) => theme.silver};
-    border-right: 0.05rem solid ${({ theme }) => theme.silver};
-    border-left: 0.05rem solid ${({ theme }) => theme.silver};
+    border: 0.1rem groove ${({ theme }) => theme.silver};
     padding: 0;
-    border-top-left-radius: 1rem;
-    border-top-right-radius: 1rem;
+    border-radius: 1rem;
     box-shadow: 0 0 1vw 1vw rgba(0, 0, 0, 0.5);
     cursor: pointer;
     .gatsby-image-wrapper {
-      border-top-left-radius: 1rem;
-      border-top-right-radius: 1rem;
+      border-radius: 1rem;
     }
   }
+  .flipTo {
+    background: none;
+    border: 0.05rem solid ${({ theme }) => theme.silver};
+    padding: 0;
+    border-radius: 1rem;
+    box-shadow: 0 0 1vw 1vw rgba(0, 0, 0, 0.5);
+    cursor: pointer;
+    .gatsby-image-wrapper {
+      border-radius: 1rem;
+    }
+  }
+  .flipBack {
+    color: ${({ theme }) => theme.primaryHover};
+    cursor: pointer;
+    font-size: 3rem;
+    background: none;
+    border-style: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    padding: 1rem 1rem 0 0;
+  }  
+
   .product {
     display: flex;
     flex-direction: column;
     min-height: 100%;
     background: ${({ theme }) => theme.dblue};
     padding: 0 1rem 0 1.5rem;
-    border-left: 0.05rem solid ${({ theme }) => theme.silver};
-    border-bottom: 0.05rem solid ${({ theme }) => theme.silver};
-    border-right: 0.05rem solid ${({ theme }) => theme.silver};
-    border-bottom-left-radius: 1rem;
-    border-bottom-right-radius: 1rem;
+    border: 0.1rem groove ${({ theme }) => theme.silver};
+    border-radius: 1rem;
     h2 {
       font-size: 1.8rem;
       color: ${({ theme }) => theme.primaryHover};

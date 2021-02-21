@@ -1,12 +1,13 @@
 import React, { useState, useContext } from "react";
 import Img from "gatsby-image";
 import Slide from "react-reveal";
+import ReactCardFlip from "react-card-flip";
 import styled from "styled-components";
 import CartContext from "../contexts/CartContext";
 
 const ProductsGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(32rem, 1fr));
+  grid-template-columns: repeat(auto-fill, minmax(35rem, 1fr));
   gap: 8vw;
   padding: 4vw;
   margin: 10rem 0;
@@ -19,49 +20,64 @@ const ProductsGrid = styled.div`
   }
   @media (min-width: 1024px) {
     margin-top: 2rem;
-    gap: 6vw;
-    padding: 6vw;
+    
   }
 `;
 
 const ProductItemsGrid = styled.div`
   width: 35rem;
+  height: 35rem;
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: 35rem;
+  grid-auto-rows: 35rem;
   h2 {
     text-transform: uppercase;
   }
 `;
 
 function ProductItem({ product }) {
-  const [show, setShow] = useState(false);
-  
+  const [isFlipped, setIsFlipped] = useState(false);
+
   const handleClick = (e) => {
-    setShow(!show);
+    setIsFlipped(!isFlipped);
   };
 
   const cntxt = useContext(CartContext);
 
   const addToCart = (product) => {
     cntxt.setCart([...cntxt.cart, product]);
-    setShow(!show);
+    setIsFlipped(!isFlipped);
   };
 
   return (
-    <ProductItemsGrid>
-      <button
-        className="slideBtn"
-        type="button"
-        onClick={(e) => {
-          handleClick(e);
-        }}
-      >
-        <Img fluid={product.image.asset.fluid} alt={product.name} />
-      </button>
-      <Slide top collapse when={show}>
+    <ReactCardFlip isFlipped={isFlipped} flipDirection="horizontal">
+      <ProductItemsGrid>
+        <button
+          className="flipTo"
+          type="button"
+          onClick={(e) => {
+            handleClick(e);
+          }}
+        >
+          <Img fluid={product.image.asset.fluid} alt={product.name} />
+        </button>
+      </ProductItemsGrid>
+      <ProductItemsGrid>
         <div className="product">
+        <button
+                type="button"
+                className="flipBack"
+                onClick={(e) => {
+                  handleClick(e);
+                }}
+              >
+                &times;
+              </button>
           <h2>
-            <span>{product.name}</span>
+            <span>
+              {product.name}
+              
+            </span>
           </h2>
           <h3>${product.price}</h3>
           <h4>{product.pdcode}</h4>
@@ -80,14 +96,10 @@ function ProductItem({ product }) {
             </button>
           </div>
         </div>
-      </Slide>
-    </ProductItemsGrid>
+      </ProductItemsGrid>
+    </ReactCardFlip>
   );
 }
-
-
-
-
 
 export default function Product({ products }) {
   return (
