@@ -14,7 +14,7 @@ const StyledContactIntro = styled.div`
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  h3 {
+  h2 {
     margin: 0 auto;
     font-size: 2.2rem;
     color: ${({ theme }) => theme.dblue};
@@ -23,6 +23,17 @@ const StyledContactIntro = styled.div`
     margin: 1rem;
     font-size: 1.8rem;
     color: ${({ theme }) => theme.silver};
+  }
+  @media (min-width: 1440px) {
+    width: 20vw;
+    padding: 1vw;
+    h2 {
+      font-size: 1.6vw;
+    }
+    p {
+      margin: 1vw;
+      font-size: 1.2vw;
+    }
   }
   
 `;
@@ -34,7 +45,7 @@ export default function ContactIntro() {
       <Logo className="css animated"/>
       </Pulse>
       
-      <h3>We're Here To Help</h3>
+      <h2>We're Here To Help</h2>
       <p>You can either fill in the form and we'll contact you, or use our contact details to get in touch.</p>
     </StyledContactIntro>
   );

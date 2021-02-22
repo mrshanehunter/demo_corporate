@@ -67,6 +67,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: "futura-pt";
     text-transform: uppercase;
     cursor: pointer;
+    @media (min-width: 1440px) {
+      width: 21vw;
+      height: 2vw;
+      font-size: 1.2vw;
+      letter-spacing: 0.25vw;
+    }
   }
   .svcbtnb {
     width: 30rem;
@@ -80,7 +86,12 @@ const GlobalStyles = createGlobalStyle`
     font-family: "futura-pt";
     text-transform: uppercase;
     cursor: pointer;
-    
+    @media (min-width: 1440px) {
+      width: 21vw;
+      height: 2vw;
+      font-size: 1.2vw;
+      letter-spacing: 0.25vw;
+    }
   }
   .slideBtn {
     background: none;
@@ -103,7 +114,7 @@ const GlobalStyles = createGlobalStyle`
     cursor: pointer;
     .gatsby-image-wrapper {
       border-radius: 1rem;
-    }
+  }
   }
   .flipBack {
     color: ${({ theme }) => theme.primaryHover};
@@ -115,6 +126,10 @@ const GlobalStyles = createGlobalStyle`
     top: 0;
     right: 0;
     padding: 1rem 1rem 0 0;
+    @media (min-width: 1440px) {
+      font-size: 2vw;
+      padding: 0.75vw 0.75vw;
+    }
   }  
 
   .product {
@@ -148,6 +163,28 @@ const GlobalStyles = createGlobalStyle`
     .desc {
       flex: 1;
     }
+    @media (min-width: 1440px) {
+      h2 {
+        font-size: 1.4vw;
+        margin-left: 0.5vw;
+      }
+      h3 {
+        font-size: 1.2vw;
+        margin-left: 0.5vw;
+      }
+      h4 {
+        font-size: 0.75vw;
+        margin-left: 0.5vw;
+        padding-top: 0.5vw;
+      }
+      p {
+        font-size: 1vw;
+        padding: 0 1vw;
+      }
+      .btnDiv {
+        margin-bottom: 0.75vw;
+      }
+    }
   }
   .atcBtn {
     width: 75%;
@@ -162,19 +199,19 @@ const GlobalStyles = createGlobalStyle`
     font-family: "futura-pt";
     text-transform: uppercase;
     cursor: pointer;
+    @media (min-width: 1440px) {
+      font-size: 1.2vw;
+      letter-spacing: 0.25vw;
+    }
   }
   
-.ratestable {
-  width: 20rem;
-  height: 20rem;
-  background: red;
-  font-size: 3rem;
-  color: green;
-}
 .cartProduct {
   color: ${({ theme }) => theme.primaryHover};
   font-size: 1.8rem;
   text-align: center;
+  @media (min-width: 1440px) {
+    font-size: 1.2vw;
+  }
 }
 .cartTtl {
   font-size: 2rem;
@@ -182,6 +219,10 @@ const GlobalStyles = createGlobalStyle`
   color: ${({ theme }) => theme.silver};
   text-transform: uppercase;
   margin: 0;
+  @media (min-width: 1440px) {
+    font-size: 1.4vw;
+    margin-top: 1vw;
+  }
 }
 .cartGST {
   font-size: 1.4rem;
@@ -190,6 +231,24 @@ const GlobalStyles = createGlobalStyle`
   color: ${({ theme }) => theme.silver};
   text-transform: uppercase;
   margin: 0;
+  @media (min-width: 1440px) {
+    font-size: 1vw;
+    margin-bottom: 1vw;
+  }
+}
+.checkOutImg {
+  width: 25rem;
+  height: 25rem;
+  border-radius: 1rem;
+  border: 0.05rem solid #1978a5;
+  align-self: center;
+ 
+  @media (min-width: 1440px) {
+    width: 15vw;
+    height: 15vw;
+    margin-top: 1vw;
+    margin-left: 1.5vw;
+  }
 }
 .checkOut {
   width: 60%;
@@ -204,10 +263,14 @@ const GlobalStyles = createGlobalStyle`
   text-transform: uppercase;
   box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
   color: ${({ theme }) => theme.dblue};
-  letter-spacing: 4px;
+  letter-spacing: 2px;
   border-radius: 5px;
   text-align: center;
   cursor: pointer;
+  @media (min-width: 1440px) {
+    font-size: 1.2vw;
+      letter-spacing: 0.25vw;
+  }
 }
 .remove {
   background: transparent;
@@ -223,6 +286,10 @@ const GlobalStyles = createGlobalStyle`
   cursor: pointer;
   width: 50%;
   margin-left: 25%;
+  @media (min-width: 1440px) {
+    font-size: 1vw;
+    letter-spacing: 0.25vw;
+  }
 }
 
 .carousel-container {

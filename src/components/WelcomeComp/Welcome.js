@@ -20,16 +20,14 @@ const StyledWelcome = styled.div`
    margin: 0 auto 2rem; 
   }
   @media (min-width: 1024px) {
-   width: 55%;
-   max-height: 850px;
-   margin: 0;
-   
-    
+   width: 100%;
+   height: auto;
   }
 `;
 
 const StyledWelcomeMessage = styled.div`
   width: 100%;
+  height: 100%;
   margin: 0 auto;
   background: ${({ theme }) => theme.lblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
@@ -44,7 +42,6 @@ const StyledWelcomeMessage = styled.div`
 
 const StyledCopy = styled.div`
   color: ${({ theme }) => theme.primaryHover};
-  
   h2 {
     margin: 0;
     text-transform: uppercase;
@@ -64,6 +61,20 @@ const StyledCopy = styled.div`
     padding-right: 2rem;
     padding-bottom: 0.4rem;
     flex: 1;
+  }
+  @media (min-width: 1440px) {
+    h2 {
+      font-size: 1.6vw;
+      padding: 0.5vw 1vw;
+    }
+    p {
+      font-size: 1.2vw;
+      padding: 0 1vw;
+    }
+    li {
+      font-size: 1vw;
+      padding: 0.5vw 2vw 0.5vw 1vw;
+    }
   }
 `;
 
@@ -92,7 +103,7 @@ function CopyDetails({ copy }) {
 
 export default function Welcome({ copies }) {
   return (
-    <StyledWelcome>
+    <StyledWelcome className="content">
       {copies.map((copy) => (
         <CopyDetails key={copy.id} copy={copy} />
       ))}

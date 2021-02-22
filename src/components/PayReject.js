@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
+import Pulse from "react-reveal/Pulse";
+import Logo from "./Logo";
 
 const StyledContainer = styled.div` 
-  width: 35rem;
+  width: 30rem;
+  margin: 4rem auto;
   background: ${({ theme })=> theme.lblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
@@ -12,6 +15,7 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   h3 {
     margin-top: 0;
@@ -26,7 +30,16 @@ const StyledContainer = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
-
+  @media (min-width: 1440px) {
+    width: 20vw;
+    padding: 1vw;
+    h3 {
+      font-size: 1.4vw;
+    }
+    a {
+      font-size: 1vw;
+    }
+  }
 `;
 
 
@@ -43,6 +56,9 @@ export default function PayReject(props) {
 
   return (
     <StyledContainer>
+         <Pulse forever={true}>
+      <Logo className="css animated"/>
+      </Pulse>
       
       <h3>Either you didn't complete the checkout or there was a problem with your payment {fName}</h3>
       

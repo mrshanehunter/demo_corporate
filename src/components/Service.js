@@ -24,6 +24,13 @@ const ServicesGrid = styled.div`
     justify-content: center;
     padding: 2vw;
   }
+  @media (min-width: 1440px) {
+    grid-template-columns: repeat(auto-fill, minmax(20vw, 1fr));
+    grid-auto-rows: auto;
+    gap: 4vw;
+    justify-content: center;
+    padding: 3vw;
+  }
 `;
 
 

@@ -29,6 +29,16 @@ const StyledContact = styled.div`
   .postal {
     margin-top: 2rem;
   }
+  @media (min-width: 1440px) {
+    width: 20vw;
+    padding: 1vw;
+    h3 {
+      font-size: 1.6vw;
+    }
+    p {
+      font-size: 1.2vw;
+    }
+  }
 `;
 
 function ContactDetails({ contact }) {

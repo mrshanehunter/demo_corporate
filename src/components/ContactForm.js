@@ -43,6 +43,25 @@ const StyledForm = styled.form`
     text-transform: uppercase;
     letter-spacing: 2px;
     font-family: "futura-pt";
+    cursor: pointer;
+  }
+  @media (min-width: 1440px) {
+    width: 20vw;
+    padding: 1vw;
+    gap: 0.75vw;
+    label {
+      font-size: 1vw;
+    }
+    input {
+      font-size: 1.2vw;
+    }
+    textarea {
+      font-size: 1.2vw;
+    }
+    button {
+      font-size: 1.2vw;
+      letter-spacing: 0.25vw;
+    }
   }
   
   

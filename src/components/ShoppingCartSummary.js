@@ -34,6 +34,10 @@ const StyledShoppingCartSummary = styled.div`
     margin-top: 10rem;
     align-self: center;
   }
+  @media (min-width: 1440px) {
+    width: 17.5vw;
+    font-size: 1.2vw;
+  }
 `;
 
 export default function ShoppingCartSummary() {

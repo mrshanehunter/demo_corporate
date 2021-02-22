@@ -15,6 +15,10 @@ const LogoStyles = styled.div`
   background-repeat: no-repeat;
   background-position: center;
   padding: 0;
+  @media (min-width: 1440px) {
+    width: 9vw;
+    height: 9vw;
+  }
 `;
 
 export default function Logo() {

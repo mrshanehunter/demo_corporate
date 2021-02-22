@@ -9,7 +9,7 @@ const StyledNews = styled.div`
   box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
   border-radius: 1rem;
   padding: 1rem;
-  
+
   @media (min-width: 768px) {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
@@ -20,11 +20,25 @@ const StyledNews = styled.div`
   }
   @media (min-width: 1024px) {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(30rem, 1fr));
+    grid-template-columns: 1fr;
     grid-auto-rows: auto;
     gap: 1rem;
     width: 100%;
-    margin: 0;
+  }
+  @media (min-width: 1350px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(22.5rem, 1fr));
+    grid-auto-rows: auto;
+    gap: 1rem;
+    width: 100%;
+  }
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(17.5vw, 1fr));
+    grid-auto-rows: auto;
+    gap: 1vw;
+    padding: 0.5vw;
+    width: 100%;
   }
 `;
 
@@ -40,16 +54,16 @@ const StyledNewsItem = styled.div`
   :nth-child(6) {
     margin-bottom: 0;
   }
-  h2 {
+  .headline h2 {
     margin-bottom: 0.5rem;
     padding: 0 1rem;
     color: ${({ theme }) => theme.primaryHover};
   }
-  h5 {
+  .headline h5 {
     margin: 0;
     padding-left: 1rem;
   }
-  div {
+  .story {
     display: flex;
     flex-direction: column;
     align-content: center;
@@ -64,25 +78,90 @@ const StyledNewsItem = styled.div`
       align-items: flex-start;
       color: ${({ theme }) => theme.silver};
     }
+    img {
+      border-radius: 1rem;
+      border: 0.05rem solid ${({ theme }) => theme.silver};
+      box-shadow: 0 0 0.5rem 0.5rem rgba(0, 0, 0, 0.4);
+    }
   }
   @media (min-width: 768px) {
     width: 28rem;
     margin-bottom: 0;
   }
   @media (min-width: 1024px) {
-    width: 32rem;
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    align-items: flex-start;
+    .headline {
+      max-width: 40%;
+      margin-top: 0.5rem;
+      h2 {
+        margin-top: 0;
+      }
+      h5 {
+        align-self: flex-start;
+      }
+    }
+    .story {
+      max-width: 60%;
+      margin-top: 0.5rem;
+      justify-content: center;
+    }
+    img {
+      max-width: 90%;
+    }
+  
+  }
+  @media (min-width: 1350px) {
+  display: flex;
+  flex-direction: column;
+  width: 25rem;
+  margin: 0 auto;
+  .headline {
+    flex-direction: column;
+    max-width: 100%;
+  }
+  .story {
+    max-width: 100%;
     margin-bottom: 0;
   }
+  }
+  @media (min-width: 1440px) {
+    width: 17.5vw;
+    .headline {
+      margin-top: 0.5vw;
+      padding: 0 0.5vw;
+      h2 {
+        font-size: 1.2vw;
+      }
+      h5 {
+        font-size: 0.75vw;
+        padding-bottom: 0.25vw;
+      }
+    }
+    .story {
+      p {
+        font-size: 1.1vw;
+        padding: 0 0.5vw;
+      }
+      img {
+        width: 90%;
+      }
+    }
+  }
+  
 `;
 
 function NewsItem({ item }) {
   return (
     <StyledNewsItem>
+      <div className="headline">
       <h2>{item.headline}</h2>
       <h5>SOURCE: {item.source}</h5>
       <h5>{Date(item.datetime).toString()}</h5>
-      <hr style={{ margin: `0.5rem 1rem` }} />
-      <div>
+      </div>
+      <div className="story">
         <img src={item.image} alt={item.headline} width="220" />
         <p>{item.summary}</p>
       </div>
@@ -95,8 +174,7 @@ const NewsTable = (props) => {
 
   if (!news || news.length === 0) return <p>No News available today</p>;
   return (
-   
-    <StyledNews>
+    <StyledNews className="news">
       {news.map((item) => (
         <NewsItem key={item.id} item={item} />
       ))}

@@ -14,11 +14,16 @@ const ProductsGrid = styled.div`
   justify-items: center;
   @media (min-width: 768px) {
     margin-top: 10rem;
-    gap: 4vw;
-    padding: 4vw;
+    gap: 2vw;
+    padding: 2vw;
   }
   @media (min-width: 1024px) {
     margin-top: 2rem;
+  }
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(25vw, 1fr)); 
+    gap: 4vw;
     
   }
 `;
@@ -31,6 +36,13 @@ const ProductItemsGrid = styled.div`
   grid-auto-rows: 35rem;
   h2 {
     text-transform: uppercase;
+  }
+  @media (min-width: 1440px) {
+    width: 25vw;
+    height: 25vw;
+    display: grid;
+    grid-template-columns: 25vw;
+    grid-auto-rows: 25vw;
   }
 `;
 

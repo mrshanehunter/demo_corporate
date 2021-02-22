@@ -11,7 +11,7 @@ const ContainingDiv = styled.div`
   margin: 12.5rem auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 3vw;
+  gap: 3rem;
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }
@@ -19,6 +19,7 @@ const ContainingDiv = styled.div`
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2vw;
   }
+  
 `;
 
 export default function contactPage( props ) {

@@ -39,6 +39,17 @@ const StyledTile = styled.div`
     margin: 1rem;
     color: ${({ theme }) => theme.silver};
   }
+  @media (min-width: 1440px) {
+    width: 20vw;
+    padding: 1vw;
+    h3 {
+      font-size: 1.4vw;
+    }
+    a {
+      font-size: 1.2vw;
+      margin: 1vw 0.5vw;
+    }
+  }
 `;
 
 const ThanksPage = () => {

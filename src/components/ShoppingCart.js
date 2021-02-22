@@ -10,10 +10,13 @@ const stripePromise = loadStripe(process.env.GATSBY_STRIPE_KEY)
 
 const CartContainer = styled.div`
   width: 32rem;
-  margin: 2rem auto;
+  margin: 4rem auto;
   background: ${({ theme })=> theme.dblue};
   border: thin solid ${({ theme }) => theme.silver};
   border-radius: 1rem;
+  @media (min-width: 1440px) {
+    width: 20vw;
+  }
 `;
 
 const CartGrid = styled.div` 
@@ -27,6 +30,9 @@ const CartGrid = styled.div`
   
 `;
 
+
+ 
+
 const CartItemsGrid = styled.div` 
   display: grid;
   grid-template-rows: 25rem 2rem 2rem;
@@ -38,18 +44,32 @@ const CartItemsGrid = styled.div`
   @media (min-width: 768px) {
     gap: 3rem;
   }
-  
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-template-rows: 15vw 1fr 1fr;
+    grid-auto-columns: 18vw;
+  }
 `;
 
 const CartContactGrid = styled.div`
   display: grid;
-  grid-template-rows: 2rem 2rem;
-  grid-auto-columns: 28rem;
+  grid-template-columns: 28rem;
+  grid-template-rows: 1fr 1fr;
+  justify-content: center;
   gap: 1.5rem;
   margin: 2rem;
   input {
     border-radius: 0.25rem;
     font-size: 1.8rem;
+  }
+  @media (min-width: 1440px) {
+    grid-template-columns: 18vw;
+    gap: 1vw;
+    margin-bottom: 1vw;
+    input {
+      border-radius: 0.1vw;
+      font-size: 1.2vw;
+    }
   }
 `;
 
@@ -75,7 +95,7 @@ const removeFromCart = (product) => {
 const cartItems = cart.map((product) => (
   
   <CartItemsGrid key={product.pricecode}>
-  <Img fluid={product.image.asset.fluid} alt={product.name} className="checkOutImg" style={{maxWidth: `300px`, maxHeight: `300px`, borderRadius: `5px`, border: `0.05rem solid #1978a5`}}/>
+  <Img fluid={product.image.asset.fluid} alt={product.name} className="checkOutImg" />
   <div className="cartProduct"> {`${product.name}: $${product.price}`}</div>
     <input className="remove" disabled={loading} type="submit" value="Remove" onClick={() => removeFromCart(product)} />
   </CartItemsGrid>
@@ -144,8 +164,8 @@ return (
 </CartGrid>  
 <CartContactGrid>
     <div style={{display: `flex`, flexDirection: `row`}}>
-    <input type="text" name="Fname"ref={nameRef} placeholder="Your First Name" required style={{width: `14rem`}} />
-    <input type="text" name="Lname" ref={surnameRef} placeholder="Your Last Name" required style={{width: `14rem`}}/>
+    <input type="text" name="Fname"ref={nameRef} placeholder="Your First Name" required style={{width: `50%`}} />
+    <input type="text" name="Lname" ref={surnameRef} placeholder="Your Last Name" required style={{width: `50%`}}/>
     </div>
     <input type="email" name="email" ref={emailRef} placeholder="Your Email Address" required />
     </CartContactGrid>

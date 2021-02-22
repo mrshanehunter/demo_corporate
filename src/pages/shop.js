@@ -20,6 +20,7 @@ const ContainingDiv = styled.div`
     flex-direction: column;
     align-items: center;
   }
+  
 `;
 
 
@@ -50,10 +51,7 @@ export const query = graphql`
         description2
         image {
           asset {
-            fixed(width: 300, height: 300) {
-              ...GatsbySanityImageFixed
-            }
-            fluid(maxWidth: 600) {
+            fluid(maxWidth: 900) {
               ...GatsbySanityImageFluid
             }
           }

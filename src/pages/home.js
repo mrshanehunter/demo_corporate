@@ -24,7 +24,7 @@ const ContainingDiv = styled.div`
     margin-top: 10rem;
     grid-template-rows: auto 1fr;
     gap: 2vw;
-    justify-content: stretch;
+    
   }
 `;
 
@@ -32,18 +32,21 @@ const SubGridDiv = styled.div`
   display: flex;
   justify-content: space-evenly;
   align-content: center;
+  align-items: center;
   flex-direction: column;
- 
-
- 
 
   @media (min-width: 1024px) {
-   display: flex; 
-   flex-direction: row;
-   flex-wrap: wrap;
-   justify-content: space-between;
-   align-content: flex-start;
-  
+   display: grid; 
+   grid-gap: 2rem;
+   grid-template-columns: 1fr 20rem 1.2fr;
+   align-items: start;
+  }
+
+  @media (min-width: 1440px) {
+    display: grid;
+    grid-gap: 2vw;
+    grid-template-columns: 1.5fr 1fr 2fr;
+    align-items: start;
   }
 `;
 

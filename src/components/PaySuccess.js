@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
-import { Link, useStaticQuery, graphql } from "gatsby";
+import React, { useState, useEffect, useRef } from "react";
+import { Link } from "gatsby";
 import styled from "styled-components";
+import Pulse from "react-reveal/Pulse";
+import Logo from "./Logo";
 
 
 const StyledContainer = styled.div` 
-  width: 35rem;
-  background: ${({ theme })=> theme.dblue};
+  width: 30rem;
+  margin: 4rem auto;
+  background: ${({ theme })=> theme.lblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
   padding: 2rem;
@@ -13,6 +16,7 @@ const StyledContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   text-align: center;
   h3 {
     margin-top: 0;
@@ -20,11 +24,11 @@ const StyledContainer = styled.div`
     color: ${({ theme }) => theme.primaryHover};
     text-transform: uppercase;
   }
-  h4 {
+  p {
     margin-top: 0;
     font-size: 2rem;
-    color: ${({ theme }) => theme.lblue};
-    text-transform: uppercase;
+    color: ${({ theme }) => theme.dblue};
+    
   }
   a {
     margin-top: 0;
@@ -34,12 +38,29 @@ const StyledContainer = styled.div`
     text-decoration: none;
     cursor: pointer;
   }
-  p {
+  .reference {
     overflow-wrap: break-word;
-    font-size: 1.2rem;
+    font-size: 1rem;
     width: 90%;
     margin: 2rem auto;
     color: ${({ theme }) => theme.silver};
+  }
+  @media (min-width: 1440px) {
+    width: 20vw;
+    padding: 1vw;
+    h3 {
+      font-size: 1.4vw;
+    }
+    p {
+      font-size: 1.2vw;
+    }
+    a {
+      font-size: 1vw;
+    }
+    .reference {
+      font-size: 0.75vw;
+      margin: 1vw auto;
+    }
   }
 
 `;
@@ -47,23 +68,13 @@ const StyledContainer = styled.div`
 
 
 
-export default function PaySuccess(props) {
+export default function PaySuccess({ refData }) {
   const [loading, setLoading] = useState(false);
-  let products = [];
+  const products = useRef();
   const [cName, setCName] = useState("");
   const [productDetails, setProductDetails] = useState([]);
   const [sesh, setSesh] = useState("");
     
-  const { refdata } = useStaticQuery(graphql`
-    query {
-      refdata: allSanityProducts {
-        nodes {
-          name
-          pricecode
-        }
-      }
-    }
-  `);
 
     useEffect(() => {
      let finished = false;
@@ -74,7 +85,8 @@ export default function PaySuccess(props) {
       await setSesh(sessionStorage.getItem("id"));
       setLoading(loading);
       if (loading && cName !== "") {
-        products = JSON.parse(productDetails);
+        let temp = JSON.parse(productDetails)
+        temp = products.current.value;
         finished = true;
       }
     }  
@@ -86,7 +98,7 @@ export default function PaySuccess(props) {
  
 })
 
-  const data = refdata.nodes 
+  const data = refData;
   let resItems = [];
    
   function nameFind(data, products) {
@@ -105,11 +117,14 @@ nameFind(data, products);
   if (resItems.length > 1) {
     return (
       <StyledContainer>
+           <Pulse forever={true}>
+      <Logo className="css animated"/>
+      </Pulse>
         <h3>Thanks for your purchase {cName}</h3>
-     <h4>Your tax invoice is being sent via email.</h4>
-     <h4>Until it arrives, take note of this reference:</h4>
-     <p>{sesh}</p>
-     <h4>We will be in contact with you shortly to make arrangements for your purchases</h4>
+     <p>Your tax invoice is being sent via email.</p>
+     <p>Until it arrives, take note of this reference:</p>
+     <p className="reference">{sesh}</p>
+     <p>We will be in contact with you shortly to make arrangements for your purchases</p>
      <Link to="/home">Click Here To Continue Browsing</Link>
       </StyledContainer>
     )
@@ -118,10 +133,14 @@ nameFind(data, products);
    
    return (
     <StyledContainer>
+         <Pulse forever={true}>
+      <Logo className="css animated"/>
+      </Pulse>
      <h3>Thanks for your purchase {cName}</h3>
-     <h4>Your tax invoice is being sent via email.</h4>
-     <h4>Until it arrives, take note of this reference:{sesh}</h4>
-     <h4>We will be in contact with you shortly to arrange your:{resItems.name}</h4>
+     <p>Your tax invoice is being sent via email.</p>
+     <p>Until it arrives, take note of this reference:</p>
+     <p className="reference">{sesh}</p>
+     <p>We will be in contact with you shortly to arrange your:{resItems.name}</p>
      <Link to="/home">Click Here To Continue Browsing</Link>
     </StyledContainer>
   );

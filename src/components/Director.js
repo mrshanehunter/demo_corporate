@@ -44,6 +44,27 @@ const DirectorCard = styled.div`
   }  
   @media (min-width: 1024px) {
     max-Width: 950px;
+    .desc {
+    text-align: left;
+    }
+  }
+  @media (min-width: 1440px) {
+    max-width: 60vw;
+    .detail {
+      h2 {
+        font-size: 1.6vw;
+      }
+      h4 {
+        font-size: 1vw;
+      }
+    }
+
+    .desc {
+      padding: 1vw;
+      p {
+        font-size: 1.2vw;
+      }
+    }
   }
  `;
 
@@ -73,6 +94,17 @@ const StyledHead = styled.div`
     width: 20rem;
     height: 20rem;
     border-radius: 50%;
+  }
+  @media (min-width: 1440px) {
+    width: 15vw;
+    height: 15vw;
+    margin: 1vw;
+    box-shadow: 0.25vw 0.25vw 0.5vw 0.5vw rgba(0 ,0 ,0 ,0.25);
+    .gatsby-image-wrapper {
+      width: 15vw;
+      height: 15vw;
+      border: 0.075vw solid ${({ theme }) => theme.silver}; 
+    }
   }
 `;
 

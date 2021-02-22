@@ -41,6 +41,12 @@ export const StyledMenu = styled.nav`
       text-align: center;
     }
 
+    @media (min-width: 1440px) {
+      font-size: 1.2vw;
+      padding: 1vw 0;
+      letter-spacing: 0.25vw;     
+    }
+
     &:hover {
       color: ${({ theme }) => theme.primaryHover};
     }
@@ -51,12 +57,20 @@ export const StyledMenu = styled.nav`
     padding-bottom: 0;
     font-size: 1.2rem;
     letter-spacing: 0.25rem;
+    @media (min-width: 1440px) {
+      font-size: 0.75vw;
+      letter-spacing: 0.15vw;
+    }
   }
   .foot {
     margin-top: 0;
     padding-bottom: 0;
     font-size: 1.2rem;
     letter-spacing: 0.25rem;
+    @media (min-width: 1440px) {
+      font-size: 0.75vw;
+      letter-spacing: 0.15vw;
+    }
   }
 
   h5 {
@@ -68,6 +82,10 @@ export const StyledMenu = styled.nav`
     color: ${({ theme }) => theme.dblue};
     text-decoration: none;
     text-align: center;
+    @media (min-width: 1440px) {
+      font-size: 0.75vw;
+      letter-spacing: 0.15vw;
+    }
   }
 
 

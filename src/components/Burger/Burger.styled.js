@@ -41,4 +41,17 @@ export const StyledBurger = styled.button`
       transform: ${({ open }) => open ? 'rotate(-45deg)' : 'rotate(0deg)'};
     }
   }
+  @media (min-width: 1440px) {
+    position: absolute;
+    top: 5%;
+    left: 2vw;
+    width: 2vw;
+    height: 2vw;
+    div {
+      width: 2vw;
+      height: 0.25vw;
+      border-radius: 0.15vw;
+      transform-origin: 0.095vw;
+    }
+  }
 `;

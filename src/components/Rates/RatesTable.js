@@ -21,9 +21,9 @@ const StyledRatesContainer = styled.div`
     
   }
   @media (min-width: 1024px) {
-    width: 40%;
-    max-height: 850px;
-    margin: 0;
+    width: 100%;
+   
+    margin: 0 auto;
 
   }
 `;
@@ -76,12 +76,22 @@ const StyledExchange = styled.div`
     grid-template-rows: auto auto auto 1fr auto auto;
     div {
       display: grid;
-      grid-template-columns: 1fr 1fr;
+      grid-template-columns: 1fr;
       text-align: center;
     }
     p {
       margin-top: 0.45rem;
-      
+    }
+  }
+  @media (min-width: 1440px) {
+    h2 {
+      font-size: 1.6vw;
+    }
+    h3 {
+      font-size: 1vw;
+    }
+    p {
+      font-size: 1.2vw;
     }
   }
 `;
@@ -93,7 +103,7 @@ const RatesTable = (props) => {
 
   if (!rates || rates.length === 0) return <p>No rates available today</p>;
   return (
-    <StyledRatesContainer>
+    <StyledRatesContainer className="rates">
     <StyledExchange>
       <h2>FOREX Rates</h2>
       <h2>Base Rate: ${rates.data.base}</h2>

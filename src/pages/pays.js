@@ -1,4 +1,5 @@
 import React from "react";
+import { graphql } from "gatsby";
 import styled from "styled-components";
 import PaySuccess from "../components/PaySuccess";
 import SEO from "../components/SEOComponent";
@@ -11,16 +12,27 @@ const ContainingDiv = styled.div`
   justify-content: center;
 `;
 
-export default function paysPage(props) {
-
+export default function paysPage({ data }) {
+const refData = data.refdata.nodes;
 
   return (
     <>
     <SEO title="Payment Processed" />
     <ContainingDiv>
-      <PaySuccess props={props} />
+      <PaySuccess refData={refData} />
     </ContainingDiv>
     </>
   );
 }
 
+export const query = graphql` 
+  query productsNameQuery {
+    refdata: allSanityProducts {
+      nodes {
+        id
+        name
+        pricecode
+      }
+    }
+  }
+`;  
