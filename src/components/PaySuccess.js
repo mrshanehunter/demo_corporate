@@ -70,7 +70,7 @@ const StyledContainer = styled.div`
 
 export default function PaySuccess({ refData }) {
   const [loading, setLoading] = useState(false);
-  const products = useRef();
+ const [products, setProducts] =useState([]);
   const [cName, setCName] = useState("");
   const [productDetails, setProductDetails] = useState([]);
   const [sesh, setSesh] = useState("");
@@ -85,8 +85,7 @@ export default function PaySuccess({ refData }) {
       await setSesh(sessionStorage.getItem("id"));
       setLoading(loading);
       if (loading && cName !== "") {
-        let temp = JSON.parse(productDetails)
-        temp = products.current.value;
+        await setProducts(JSON.parse(productDetails))
         finished = true;
       }
     }  
