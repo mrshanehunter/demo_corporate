@@ -17,15 +17,17 @@ const DirectorCard = styled.div`
   align-items: center;
   text-align: center;
   margin-bottom: 1rem;
+  .detail {
   h2 {
-    font-size: 2.4rem;
-    margin-bottom: 0;
+      font-size: 2.4rem;
+      margin-bottom: 0;
   }
-  h4 {
-    font-size: 1.4rem;
-    margin-top: 0.5rem;
-    padding: 0 2rem;
-    text-align: center;
+    h4 {
+      font-size: 1.4rem;
+      margin-top: 0.5rem;
+      padding: 0 2rem;
+      text-align: center;
+  }
   }
   .desc {
     display: flex;
@@ -89,7 +91,7 @@ const StyledHead = styled.div`
   border-radius: 50%;
   border: 0.075rem solid ${({ theme }) => theme.silver}; 
   box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0 ,0 ,0 ,0.25);
-  margin: 1rem;
+  margin: 2rem;
   .gatsby-image-wrapper {
     width: 20rem;
     height: 20rem;

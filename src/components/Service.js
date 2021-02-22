@@ -10,6 +10,8 @@ const ServicesGrid = styled.div`
     grid-template-columns: 1fr;
     margin-top: 10rem;
     justify-content: center;
+    justify-items: center;
+    align-items: center;
     gap: 8vw;
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;

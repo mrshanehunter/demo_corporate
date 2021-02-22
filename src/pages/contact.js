@@ -12,6 +12,8 @@ const ContainingDiv = styled.div`
   display: grid;
   grid-template-columns: 1fr;
   gap: 3rem;
+  align-items: center;
+  justify-items: center;
   @media (min-width: 768px) {
     grid-template-columns: 1fr 1fr;
   }

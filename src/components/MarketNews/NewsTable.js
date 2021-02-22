@@ -15,7 +15,7 @@ const StyledNews = styled.div`
     grid-template-columns: repeat(auto-fill, minmax(28rem, 1fr));
     grid-auto-rows: auto;
     gap: 1rem;
-    width: 90%;
+    width: 100%;
     margin: 0 auto 2rem;
   }
   @media (min-width: 1024px) {
