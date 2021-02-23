@@ -2,10 +2,10 @@ require("dotenv").config();
 
 module.exports = {
   siteMetadata: {
-    title: `Demo_Corporate`,
+    title: `SAS Corporate`,
     description: `Corporate Styled Website with some eCommerce functionality`,
     author: `mrshanehunter`,
-    siteUrl: `localhost:8888`,
+    siteUrl: `www.sascorporate.link`,
   },
   plugins: [
     {

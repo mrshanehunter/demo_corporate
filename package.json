@@ -1,8 +1,8 @@
 {
-  "name": "demo_corporate",
+  "name": "sas_corporate",
   "version": "1.0.0",
   "private": true,
-  "description": "Demo_Corporate",
+  "description": "SAS_Corporate",
   "author": "Shane Hunter",
   "keywords": [
     "gatsby"
