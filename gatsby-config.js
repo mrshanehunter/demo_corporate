@@ -5,7 +5,7 @@ module.exports = {
     title: `SAS Corporate`,
     description: `Corporate Styled Website with some eCommerce functionality`,
     author: `mrshanehunter`,
-    siteUrl: `www.sascorporate.link`,
+    siteUrl: `https://www.sascorporate.link`,
   },
   plugins: [
     {
