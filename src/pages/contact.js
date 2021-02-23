@@ -15,11 +15,13 @@ const ContainingDiv = styled.div`
   align-items: center;
   justify-items: center;
   @media (min-width: 768px) {
-    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    gap: 1vw;
   }
   @media (min-width: 1024px) {
     grid-template-columns: 1fr 1fr 1fr;
     gap: 2vw;
+    align-items: stretch;
   }
   
 `;

@@ -94,7 +94,7 @@ const removeFromCart = (product) => {
 
 const cartItems = cart.map((product) => (
   
-  <CartItemsGrid key={product.pricecode}>
+  <CartItemsGrid key={product.pricecode} purchase={product.name}>
   <Img fluid={product.image.asset.fluid} alt={product.name} className="checkOutImg" />
   <div className="cartProduct"> {`${product.name}: $${product.price}`}</div>
     <input className="remove" disabled={loading} type="submit" value="Remove" onClick={() => removeFromCart(product)} />
@@ -149,8 +149,8 @@ function checkOut(e) {
       quantity: 1,
     }
   ))  
-  const newLines = JSON.stringify(lineItems);
-  sessionStorage.setItem("Items", newLines); 
+  JSON.stringify(lineItems);  
+  sessionStorage.setItem("Items", lineItems); 
     cartSession(lineItems); 
   }
 
