@@ -1,14 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "gatsby";
 import styled from "styled-components";
 import Pulse from "react-reveal/Pulse";
 import Logo from "./Logo";
 
-
-const StyledContainer = styled.div` 
+const StyledContainer = styled.div`
   width: 30rem;
   margin: 4rem auto;
-  background: ${({ theme })=> theme.lblue};
+  background: ${({ theme }) => theme.lblue};
   border: 0.05rem solid ${({ theme }) => theme.silver};
   box-shadow: 0.25rem 0.25rem 0.5rem 0.5rem rgba(0, 0, 0, 0.25);
   padding: 2rem;
@@ -28,7 +27,6 @@ const StyledContainer = styled.div`
     margin-top: 0;
     font-size: 2rem;
     color: ${({ theme }) => theme.dblue};
-    
   }
   a {
     margin-top: 0;
@@ -40,9 +38,9 @@ const StyledContainer = styled.div`
   }
   .reference {
     overflow-wrap: break-word;
-    font-size: 1rem;
+    font-size: 1.4rem;
     width: 90%;
-    margin: 2rem auto;
+    margin: 0 auto 2rem;
     color: ${({ theme }) => theme.silver};
   }
   @media (min-width: 1440px) {
@@ -62,86 +60,44 @@ const StyledContainer = styled.div`
       margin: 1vw auto;
     }
   }
-
 `;
-
-
-
 
 export default function PaySuccess({ refData }) {
   const [loading, setLoading] = useState(false);
- const [products, setProducts] =useState([]);
   const [cName, setCName] = useState("");
-  const [productDetails, setProductDetails] = useState([]);
+  const [items, setItems] = useState(null);
   const [sesh, setSesh] = useState("");
-    
 
-    useEffect(() => {
-     let finished = false;
+  useEffect(() => {
+    let finished = false;
 
-     const runSet = async () => {
-      await setCName(sessionStorage.getItem("cName"));
-      await setProductDetails(sessionStorage.getItem("Items"));
-      await setSesh(sessionStorage.getItem("id"));
+    const runSet = async () => {
       setLoading(loading);
-      if (loading && cName !== "") {
-        await setProducts(JSON.parse(productDetails))
-        finished = true;
-      }
-    }  
-      runSet();
+      await setCName(sessionStorage.getItem("cName"));
+      await setItems(sessionStorage.getItem("Items"));
+      await setSesh(sessionStorage.getItem("id"));
+      finished = true;
+    };
+    runSet();
+    if (finished) {
+      setLoading(!loading);
+    }
+  }, [loading]);
 
-      if (finished) {
-        setLoading(!loading)
-      }
- 
-})
-
-  const data = refData;
-  let resItems = [];
-   
-  function nameFind(data, products) {
-    products.map((item) => {
-      resItems = data.find((dataItem) => dataItem.pricecode === item.price);   
-      return {
-        ...item,
-        itemName: resItems.name,
-        itemPrice: resItems.pricecode,
-      }
-  });
-}
-
-nameFind(data, products);
-
-  if (resItems.length > 1) {
-    return (
-      <StyledContainer>
-           <Pulse forever={true}>
-      <Logo className="css animated"/>
-      </Pulse>
-        <h3>Thanks for your purchase {cName}</h3>
-     <p>Your tax invoice is being sent via email.</p>
-     <p>Until it arrives, take note of this reference:</p>
-     <p className="reference">{sesh}</p>
-     <p>We will be in contact with you shortly to make arrangements for your purchases</p>
-     <Link to="/home">Click Here To Continue Browsing</Link>
-      </StyledContainer>
-    )
-  }
-  else {
-   
-   return (
+  return (
     <StyledContainer>
-         <Pulse forever={true}>
-      <Logo className="css animated"/>
+      <Pulse forever={true}>
+        <Logo className="css animated" />
       </Pulse>
-     <h3>Thanks for your purchase {cName}</h3>
-     <p>Your tax invoice is being sent via email.</p>
-     <p>Until it arrives, take note of this reference:</p>
-     <p className="reference">{sesh}</p>
-     <p>We will be in contact with you shortly to arrange your:{resItems.name}</p>
-     <Link to="/home">Click Here To Continue Browsing</Link>
+      <h3>Thanks for your purchase {cName}</h3>
+      <p>Your tax invoice is being sent via email.</p>
+      <p>Until it arrives, take note of this reference:</p>
+      <p className="reference">{sesh}</p>
+      <p>
+        We will be in contact with you shortly to make arrangements for your
+        purchase.
+      </p>
+      <Link to="/home">Click Here To Continue Browsing</Link>
     </StyledContainer>
   );
-  }
 }

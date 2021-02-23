@@ -14,7 +14,7 @@ const ContainingDiv = styled.div`
 
 export default function paysPage({ data }) {
 const refData = data.refdata.nodes;
-
+console.log(refData)
   return (
     <>
     <SEO title="Payment Processed" />
